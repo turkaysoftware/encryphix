@@ -12,6 +12,9 @@ Every little bit helps—it keeps me motivated and gives me more time to improve
 
 [Click here](https://www.turkaysoftware.com/encryphix) for full specifications.
 
+<img width="1010" height="633" alt="Encryphix UI - Dark" src="https://github.com/user-attachments/assets/2885bdb4-4cab-4c73-91dc-455491af603e" />
+<img width="1010" height="633" alt="Encryphix UI - Light" src="https://github.com/user-attachments/assets/1eec22e6-d320-4728-b9b3-06e46425b157" />
+
 # Download Encryphix
 
 Download: [Encryphix Latest Version](https://github.com/turkaysoftware/encryphix/releases/latest)
