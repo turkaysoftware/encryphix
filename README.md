@@ -11,9 +11,9 @@
 
 [Click here](https://www.turkaysoftware.com/encryphix) for full specifications.
 
-<img width="1010" height="633" alt="Encryphix UI - Dark" src="https://github.com/user-attachments/assets/402a1750-00aa-4e87-988e-1208c1a0227a" />
+<img width="1010" height="633" alt="Encryphix UI - Dark" src="https://github.com/user-attachments/assets/7f41886c-dcb2-435e-8870-a25cf68390c7" />
 
-<img width="1010" height="633" alt="Encryphix UI - Light" src="https://github.com/user-attachments/assets/f0978a5b-fdf1-4220-b0be-0c1e18321e78" />
+<img width="1010" height="633" alt="Encryphix UI - Light" src="https://github.com/user-attachments/assets/76915b66-187e-4ee2-9440-d04daa6b08b1" />
 
 # Download Encryphix
 
@@ -73,8 +73,9 @@ With these instructions, you can download and use the correct version of Encryph
 | -- | :--: |
 | **Theme:** Light | F1 |
 | **Theme:** Dark | F2 |
-| **Start:** Windowed | F3 |
-| **Start:** Full Screen | F4 |
+| **Theme:** System | F3 |
+| **Start:** Windowed | F4 |
+| **Start:** Full Screen | F5 |
 
 | Extras | Key |
 | -- | :--: |
