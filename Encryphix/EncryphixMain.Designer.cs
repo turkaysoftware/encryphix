@@ -35,12 +35,15 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EncryphixMain));
             this.PanelBack = new System.Windows.Forms.Panel();
-            this.DragAndDropLabel = new System.Windows.Forms.Label();
             this.Progress_BG = new System.Windows.Forms.Panel();
             this.Progress_FE = new System.Windows.Forms.Panel();
             this.PanelControl = new System.Windows.Forms.Panel();
             this.CheckOrjFileDelete = new System.Windows.Forms.CheckBox();
             this.PanelBtns = new System.Windows.Forms.Panel();
+            this.BtnSelect = new Encryphix.TSCustomButton();
+            this.BtnBurner = new Encryphix.TSCustomButton();
+            this.BtnSavePath = new Encryphix.TSCustomButton();
+            this.BtnShowPassword = new Encryphix.TSCustomButton();
             this.TextBox_SaveFolder = new System.Windows.Forms.TextBox();
             this.Label_SaveFolder = new System.Windows.Forms.Label();
             this.TextBox_Password = new System.Windows.Forms.TextBox();
@@ -51,6 +54,7 @@
             this.themeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lightThemeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.darkThemeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.systemThemeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.languageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.englishToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.turkishToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -62,10 +66,6 @@
             this.bmacToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MainToolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.BtnSelect = new Encryphix.TSCustomButton();
-            this.BtnBurner = new Encryphix.TSCustomButton();
-            this.BtnSavePath = new Encryphix.TSCustomButton();
-            this.BtnShowPassword = new Encryphix.TSCustomButton();
             this.PanelBack.SuspendLayout();
             this.Progress_BG.SuspendLayout();
             this.PanelControl.SuspendLayout();
@@ -76,7 +76,6 @@
             // 
             // PanelBack
             // 
-            this.PanelBack.Controls.Add(this.DragAndDropLabel);
             this.PanelBack.Controls.Add(this.Progress_BG);
             this.PanelBack.Controls.Add(this.PanelControl);
             this.PanelBack.Controls.Add(this.FAF_DGV);
@@ -86,20 +85,6 @@
             this.PanelBack.Padding = new System.Windows.Forms.Padding(15);
             this.PanelBack.Size = new System.Drawing.Size(1008, 577);
             this.PanelBack.TabIndex = 1;
-            // 
-            // DragAndDropLabel
-            // 
-            this.DragAndDropLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.DragAndDropLabel.BackColor = System.Drawing.Color.Transparent;
-            this.DragAndDropLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 11F, System.Drawing.FontStyle.Bold);
-            this.DragAndDropLabel.ForeColor = System.Drawing.Color.Black;
-            this.DragAndDropLabel.Location = new System.Drawing.Point(279, 179);
-            this.DragAndDropLabel.Margin = new System.Windows.Forms.Padding(3, 0, 3, 5);
-            this.DragAndDropLabel.Name = "DragAndDropLabel";
-            this.DragAndDropLabel.Size = new System.Drawing.Size(450, 45);
-            this.DragAndDropLabel.TabIndex = 1;
-            this.DragAndDropLabel.Text = "ÖĞE SÜRÜKLEYİN";
-            this.DragAndDropLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Progress_BG
             // 
@@ -164,6 +149,104 @@
             this.PanelBtns.Padding = new System.Windows.Forms.Padding(0, 12, 0, 12);
             this.PanelBtns.Size = new System.Drawing.Size(225, 124);
             this.PanelBtns.TabIndex = 7;
+            // 
+            // BtnSelect
+            // 
+            this.BtnSelect.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(111)))), ((int)(((byte)(141)))));
+            this.BtnSelect.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(111)))), ((int)(((byte)(141)))));
+            this.BtnSelect.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(111)))), ((int)(((byte)(141)))));
+            this.BtnSelect.BorderRadius = 10;
+            this.BtnSelect.BorderSize = 0;
+            this.BtnSelect.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BtnSelect.Dock = System.Windows.Forms.DockStyle.Top;
+            this.BtnSelect.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(106)))), ((int)(((byte)(137)))));
+            this.BtnSelect.FlatAppearance.BorderSize = 0;
+            this.BtnSelect.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnSelect.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
+            this.BtnSelect.ForeColor = System.Drawing.Color.White;
+            this.BtnSelect.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtnSelect.Location = new System.Drawing.Point(0, 12);
+            this.BtnSelect.Margin = new System.Windows.Forms.Padding(0, 10, 0, 0);
+            this.BtnSelect.Name = "BtnSelect";
+            this.BtnSelect.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.BtnSelect.Size = new System.Drawing.Size(225, 45);
+            this.BtnSelect.TabIndex = 0;
+            this.BtnSelect.Text = " ÖĞE SEÇ";
+            this.BtnSelect.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtnSelect.TextColor = System.Drawing.Color.White;
+            this.BtnSelect.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.BtnSelect.UseVisualStyleBackColor = false;
+            this.BtnSelect.Click += new System.EventHandler(this.BtnSelect_Click);
+            // 
+            // BtnBurner
+            // 
+            this.BtnBurner.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(111)))), ((int)(((byte)(141)))));
+            this.BtnBurner.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(111)))), ((int)(((byte)(141)))));
+            this.BtnBurner.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(111)))), ((int)(((byte)(141)))));
+            this.BtnBurner.BorderRadius = 10;
+            this.BtnBurner.BorderSize = 0;
+            this.BtnBurner.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BtnBurner.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.BtnBurner.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(106)))), ((int)(((byte)(137)))));
+            this.BtnBurner.FlatAppearance.BorderSize = 0;
+            this.BtnBurner.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnBurner.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
+            this.BtnBurner.ForeColor = System.Drawing.Color.White;
+            this.BtnBurner.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtnBurner.Location = new System.Drawing.Point(0, 67);
+            this.BtnBurner.Margin = new System.Windows.Forms.Padding(0, 0, 0, 10);
+            this.BtnBurner.Name = "BtnBurner";
+            this.BtnBurner.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.BtnBurner.Size = new System.Drawing.Size(225, 45);
+            this.BtnBurner.TabIndex = 1;
+            this.BtnBurner.Text = " ŞİFRELE";
+            this.BtnBurner.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtnBurner.TextColor = System.Drawing.Color.White;
+            this.BtnBurner.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.BtnBurner.UseVisualStyleBackColor = false;
+            this.BtnBurner.Click += new System.EventHandler(this.BtnBurner_Click);
+            // 
+            // BtnSavePath
+            // 
+            this.BtnSavePath.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(111)))), ((int)(((byte)(141)))));
+            this.BtnSavePath.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(111)))), ((int)(((byte)(141)))));
+            this.BtnSavePath.BorderColor = System.Drawing.Color.DodgerBlue;
+            this.BtnSavePath.BorderRadius = 5;
+            this.BtnSavePath.BorderSize = 0;
+            this.BtnSavePath.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BtnSavePath.FlatAppearance.BorderSize = 0;
+            this.BtnSavePath.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnSavePath.Font = new System.Drawing.Font("Segoe UI Semibold", 10.5F, System.Drawing.FontStyle.Bold);
+            this.BtnSavePath.ForeColor = System.Drawing.Color.White;
+            this.BtnSavePath.Location = new System.Drawing.Point(314, 105);
+            this.BtnSavePath.Margin = new System.Windows.Forms.Padding(3, 3, 12, 3);
+            this.BtnSavePath.Name = "BtnSavePath";
+            this.BtnSavePath.Size = new System.Drawing.Size(27, 27);
+            this.BtnSavePath.TabIndex = 6;
+            this.BtnSavePath.TextColor = System.Drawing.Color.White;
+            this.BtnSavePath.UseVisualStyleBackColor = false;
+            this.BtnSavePath.Click += new System.EventHandler(this.BtnSavePath_Click);
+            // 
+            // BtnShowPassword
+            // 
+            this.BtnShowPassword.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(111)))), ((int)(((byte)(141)))));
+            this.BtnShowPassword.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(111)))), ((int)(((byte)(141)))));
+            this.BtnShowPassword.BorderColor = System.Drawing.Color.DodgerBlue;
+            this.BtnShowPassword.BorderRadius = 5;
+            this.BtnShowPassword.BorderSize = 0;
+            this.BtnShowPassword.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BtnShowPassword.FlatAppearance.BorderSize = 0;
+            this.BtnShowPassword.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnShowPassword.Font = new System.Drawing.Font("Segoe UI Semibold", 10.5F, System.Drawing.FontStyle.Bold);
+            this.BtnShowPassword.ForeColor = System.Drawing.Color.White;
+            this.BtnShowPassword.Location = new System.Drawing.Point(314, 37);
+            this.BtnShowPassword.Margin = new System.Windows.Forms.Padding(3, 3, 12, 3);
+            this.BtnShowPassword.Name = "BtnShowPassword";
+            this.BtnShowPassword.Size = new System.Drawing.Size(27, 27);
+            this.BtnShowPassword.TabIndex = 5;
+            this.BtnShowPassword.TextColor = System.Drawing.Color.White;
+            this.BtnShowPassword.UseVisualStyleBackColor = false;
+            this.BtnShowPassword.Click += new System.EventHandler(this.BtnShowPassword_Click);
             // 
             // TextBox_SaveFolder
             // 
@@ -231,13 +314,13 @@
             this.FAF_DGV.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.FAF_DGV.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(45)))), ((int)(((byte)(163)))));
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(111)))), ((int)(((byte)(141)))));
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle2.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(45)))), ((int)(((byte)(163)))));
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(111)))), ((int)(((byte)(141)))));
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.FAF_DGV.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.FAF_DGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.FAF_DGV.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -245,7 +328,7 @@
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(45)))), ((int)(((byte)(163)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(111)))), ((int)(((byte)(141)))));
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.FAF_DGV.DefaultCellStyle = dataGridViewCellStyle3;
@@ -260,7 +343,7 @@
             dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(45)))), ((int)(((byte)(163)))));
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(111)))), ((int)(((byte)(141)))));
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.FAF_DGV.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
@@ -298,7 +381,8 @@
             // 
             this.themeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.lightThemeToolStripMenuItem,
-            this.darkThemeToolStripMenuItem});
+            this.darkThemeToolStripMenuItem,
+            this.systemThemeToolStripMenuItem});
             this.themeToolStripMenuItem.Name = "themeToolStripMenuItem";
             this.themeToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
             this.themeToolStripMenuItem.Text = "Theme";
@@ -307,7 +391,7 @@
             // 
             this.lightThemeToolStripMenuItem.Name = "lightThemeToolStripMenuItem";
             this.lightThemeToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F1;
-            this.lightThemeToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
+            this.lightThemeToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
             this.lightThemeToolStripMenuItem.Text = "Light Theme";
             this.lightThemeToolStripMenuItem.Click += new System.EventHandler(this.LightThemeToolStripMenuItem_Click);
             // 
@@ -315,9 +399,17 @@
             // 
             this.darkThemeToolStripMenuItem.Name = "darkThemeToolStripMenuItem";
             this.darkThemeToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F2;
-            this.darkThemeToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
+            this.darkThemeToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
             this.darkThemeToolStripMenuItem.Text = "Dark Theme";
             this.darkThemeToolStripMenuItem.Click += new System.EventHandler(this.DarkThemeToolStripMenuItem_Click);
+            // 
+            // systemThemeToolStripMenuItem
+            // 
+            this.systemThemeToolStripMenuItem.Name = "systemThemeToolStripMenuItem";
+            this.systemThemeToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F3;
+            this.systemThemeToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
+            this.systemThemeToolStripMenuItem.Text = "System Theme";
+            this.systemThemeToolStripMenuItem.Click += new System.EventHandler(this.SystemThemeToolStripMenuItem_Click);
             // 
             // languageToolStripMenuItem
             // 
@@ -352,7 +444,7 @@
             // windowedToolStripMenuItem
             // 
             this.windowedToolStripMenuItem.Name = "windowedToolStripMenuItem";
-            this.windowedToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F3;
+            this.windowedToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F4;
             this.windowedToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
             this.windowedToolStripMenuItem.Text = "Windowed";
             this.windowedToolStripMenuItem.Click += new System.EventHandler(this.WindowedToolStripMenuItem_Click);
@@ -360,7 +452,7 @@
             // fullScreenToolStripMenuItem
             // 
             this.fullScreenToolStripMenuItem.Name = "fullScreenToolStripMenuItem";
-            this.fullScreenToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F4;
+            this.fullScreenToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F5;
             this.fullScreenToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
             this.fullScreenToolStripMenuItem.Text = "Full Screen";
             this.fullScreenToolStripMenuItem.Click += new System.EventHandler(this.FullScreenToolStripMenuItem_Click);
@@ -404,104 +496,6 @@
             this.MainToolTip.OwnerDraw = true;
             this.MainToolTip.Draw += new System.Windows.Forms.DrawToolTipEventHandler(this.MainToolTip_Draw);
             // 
-            // BtnSelect
-            // 
-            this.BtnSelect.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(111)))), ((int)(((byte)(141)))));
-            this.BtnSelect.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(111)))), ((int)(((byte)(141)))));
-            this.BtnSelect.BorderColor = System.Drawing.Color.DodgerBlue;
-            this.BtnSelect.BorderRadius = 10;
-            this.BtnSelect.BorderSize = 0;
-            this.BtnSelect.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.BtnSelect.Dock = System.Windows.Forms.DockStyle.Top;
-            this.BtnSelect.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(106)))), ((int)(((byte)(137)))));
-            this.BtnSelect.FlatAppearance.BorderSize = 0;
-            this.BtnSelect.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnSelect.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
-            this.BtnSelect.ForeColor = System.Drawing.Color.White;
-            this.BtnSelect.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnSelect.Location = new System.Drawing.Point(0, 12);
-            this.BtnSelect.Margin = new System.Windows.Forms.Padding(0, 10, 0, 0);
-            this.BtnSelect.Name = "BtnSelect";
-            this.BtnSelect.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
-            this.BtnSelect.Size = new System.Drawing.Size(225, 45);
-            this.BtnSelect.TabIndex = 0;
-            this.BtnSelect.Text = " ÖĞE SEÇ";
-            this.BtnSelect.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnSelect.TextColor = System.Drawing.Color.White;
-            this.BtnSelect.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.BtnSelect.UseVisualStyleBackColor = false;
-            this.BtnSelect.Click += new System.EventHandler(this.BtnSelect_Click);
-            // 
-            // BtnBurner
-            // 
-            this.BtnBurner.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(111)))), ((int)(((byte)(141)))));
-            this.BtnBurner.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(111)))), ((int)(((byte)(141)))));
-            this.BtnBurner.BorderColor = System.Drawing.Color.DodgerBlue;
-            this.BtnBurner.BorderRadius = 10;
-            this.BtnBurner.BorderSize = 0;
-            this.BtnBurner.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.BtnBurner.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.BtnBurner.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(106)))), ((int)(((byte)(137)))));
-            this.BtnBurner.FlatAppearance.BorderSize = 0;
-            this.BtnBurner.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnBurner.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
-            this.BtnBurner.ForeColor = System.Drawing.Color.White;
-            this.BtnBurner.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnBurner.Location = new System.Drawing.Point(0, 67);
-            this.BtnBurner.Margin = new System.Windows.Forms.Padding(0, 0, 0, 10);
-            this.BtnBurner.Name = "BtnBurner";
-            this.BtnBurner.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
-            this.BtnBurner.Size = new System.Drawing.Size(225, 45);
-            this.BtnBurner.TabIndex = 1;
-            this.BtnBurner.Text = " ŞİFRELE";
-            this.BtnBurner.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnBurner.TextColor = System.Drawing.Color.White;
-            this.BtnBurner.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.BtnBurner.UseVisualStyleBackColor = false;
-            this.BtnBurner.Click += new System.EventHandler(this.BtnBurner_Click);
-            // 
-            // BtnSavePath
-            // 
-            this.BtnSavePath.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(111)))), ((int)(((byte)(141)))));
-            this.BtnSavePath.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(111)))), ((int)(((byte)(141)))));
-            this.BtnSavePath.BorderColor = System.Drawing.Color.DodgerBlue;
-            this.BtnSavePath.BorderRadius = 5;
-            this.BtnSavePath.BorderSize = 0;
-            this.BtnSavePath.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.BtnSavePath.FlatAppearance.BorderSize = 0;
-            this.BtnSavePath.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnSavePath.Font = new System.Drawing.Font("Segoe UI Semibold", 10.5F, System.Drawing.FontStyle.Bold);
-            this.BtnSavePath.ForeColor = System.Drawing.Color.White;
-            this.BtnSavePath.Location = new System.Drawing.Point(314, 105);
-            this.BtnSavePath.Margin = new System.Windows.Forms.Padding(3, 3, 12, 3);
-            this.BtnSavePath.Name = "BtnSavePath";
-            this.BtnSavePath.Size = new System.Drawing.Size(27, 27);
-            this.BtnSavePath.TabIndex = 6;
-            this.BtnSavePath.TextColor = System.Drawing.Color.White;
-            this.BtnSavePath.UseVisualStyleBackColor = false;
-            this.BtnSavePath.Click += new System.EventHandler(this.BtnSavePath_Click);
-            // 
-            // BtnShowPassword
-            // 
-            this.BtnShowPassword.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(111)))), ((int)(((byte)(141)))));
-            this.BtnShowPassword.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(111)))), ((int)(((byte)(141)))));
-            this.BtnShowPassword.BorderColor = System.Drawing.Color.DodgerBlue;
-            this.BtnShowPassword.BorderRadius = 5;
-            this.BtnShowPassword.BorderSize = 0;
-            this.BtnShowPassword.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.BtnShowPassword.FlatAppearance.BorderSize = 0;
-            this.BtnShowPassword.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnShowPassword.Font = new System.Drawing.Font("Segoe UI Semibold", 10.5F, System.Drawing.FontStyle.Bold);
-            this.BtnShowPassword.ForeColor = System.Drawing.Color.White;
-            this.BtnShowPassword.Location = new System.Drawing.Point(314, 37);
-            this.BtnShowPassword.Margin = new System.Windows.Forms.Padding(3, 3, 12, 3);
-            this.BtnShowPassword.Name = "BtnShowPassword";
-            this.BtnShowPassword.Size = new System.Drawing.Size(27, 27);
-            this.BtnShowPassword.TabIndex = 5;
-            this.BtnShowPassword.TextColor = System.Drawing.Color.White;
-            this.BtnShowPassword.UseVisualStyleBackColor = false;
-            this.BtnShowPassword.Click += new System.EventHandler(this.BtnShowPassword_Click);
-            // 
             // EncryphixMain
             // 
             this.AllowDrop = true;
@@ -541,7 +535,6 @@
         private System.Windows.Forms.TextBox TextBox_Password;
         private System.Windows.Forms.Panel Progress_BG;
         private System.Windows.Forms.Panel Progress_FE;
-        private System.Windows.Forms.Label DragAndDropLabel;
         private TSCustomButton BtnSelect;
         private System.Windows.Forms.TextBox TextBox_SaveFolder;
         private System.Windows.Forms.Label Label_SaveFolder;
@@ -566,6 +559,7 @@
         private System.Windows.Forms.DataGridView FAF_DGV;
         private System.Windows.Forms.CheckBox CheckOrjFileDelete;
         private System.Windows.Forms.ToolTip MainToolTip;
+        private System.Windows.Forms.ToolStripMenuItem systemThemeToolStripMenuItem;
     }
 }
 

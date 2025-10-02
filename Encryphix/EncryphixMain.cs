@@ -7,6 +7,7 @@
 // GitHub: https://github.com/turkaysoftware/encryphix
 // ======================================================================================================
 
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -36,11 +37,17 @@ namespace Encryphix{
             // LANGUAGE SET EVENTS
             englishToolStripMenuItem.Click += LanguageToolStripMenuItem_Click;
             turkishToolStripMenuItem.Click += LanguageToolStripMenuItem_Click;
+            //
+            TSThemeModeHelper.InitializeGlobalTheme();
+            SystemEvents.UserPreferenceChanged += (s, e) => TSUseSystemTheme();
         }
         // GLOBAL VARIABLES
         // ======================================================================================================
         public static string lang, lang_path;
         public static int theme;
+        // LOCAL VARIABLES
+        // ======================================================================================================
+        private int themeSystem;
         // TS PROTECTION ERROR MESSAGES
         // ======================================================================================================
         public static class TSProtectionErrorMessages{
@@ -112,8 +119,13 @@ namespace Encryphix{
             FAF_DGV.Columns.Add("FP", "Yol");
             FAF_DGV.Columns.Add("FP", "Boyut");
             FAF_DGV.Columns.Add("FP", "Durum");
-            FAF_DGV.Columns[1].Width = 50;
-            FAF_DGV.Columns[2].Width = 200;
+            FAF_DGV.RowTemplate.Height = (int)(26 * this.DeviceDpi / 96f);
+            FAF_DGV.Columns[1].Width = (int)(50 * this.DeviceDpi / 96f);
+            FAF_DGV.Columns[2].Width = (int)(200 * this.DeviceDpi / 96f);
+            foreach (DataGridViewColumn columnPadding in FAF_DGV.Columns){
+                int scaledPadding = (int)(3 * this.DeviceDpi / 96f);
+                columnPadding.DefaultCellStyle.Padding = new Padding(scaledPadding, 0, 0, 0);
+            }
             // NOT SORTABLE SET
             foreach (DataGridViewColumn OSD_Column in FAF_DGV.Columns){
                 OSD_Column.SortMode = DataGridViewColumnSortMode.NotSortable;
@@ -126,10 +138,11 @@ namespace Encryphix{
             // ======================================================================================================
             TSSettingsSave software_read_settings = new TSSettingsSave(ts_sf);
             //
-            int theme_mode = int.TryParse(software_read_settings.TSReadSettings(ts_settings_container, "ThemeStatus"), out int the_status) ? the_status : 1;
-            Theme_engine(theme_mode);
+            int theme_mode = int.TryParse(software_read_settings.TSReadSettings(ts_settings_container, "ThemeStatus"), out int the_status) && (the_status == 0 || the_status == 1 || the_status == 2) ? the_status : 1;
+            if (theme_mode == 2) { themeSystem = 2; Theme_engine(GetSystemTheme(2)); } else Theme_engine(theme_mode);
             darkThemeToolStripMenuItem.Checked = theme_mode == 0;
             lightThemeToolStripMenuItem.Checked = theme_mode == 1;
+            systemThemeToolStripMenuItem.Checked = theme_mode == 2;
             string lang_mode = software_read_settings.TSReadSettings(ts_settings_container, "LanguageStatus");
             var languageFiles = new Dictionary<string, (object langResource, ToolStripMenuItem menuItem, bool fileExists)>{
                 { "en", (ts_lang_en, englishToolStripMenuItem, File.Exists(ts_lang_en)) },
@@ -230,7 +243,6 @@ namespace Encryphix{
             TSImageRenderer(BtnBurner, image, 25, ContentAlignment.MiddleLeft);
             //
             BtnBurner.Text = hasAes ? " " + software_lang.TSReadLangs("EncryphixUI", "eui_decrypt_text") : " " + software_lang.TSReadLangs("EncryphixUI", "eui_encrypt_text");
-            DragAndDropLabel.Visible = false;
         }
         // RENDER DATA
         // ======================================================================================================
@@ -359,7 +371,7 @@ namespace Encryphix{
                                                         SafeDeleteDirectory(outputFolder);
                                                     }
                                                     Directory.CreateDirectory(outputFolder);
-                                                    DecryptFileToFolder(currentFilePath, outputFolder, password, null);
+                                                    DecryptFileToFolder(currentFilePath, outputFolder, password, null, deleteOriginal);
                                                 }else{
                                                     string outputFile = Path.Combine(outputDirectory, Path.GetFileNameWithoutExtension(currentFilePath));
                                                     if (File.Exists(outputFile)){
@@ -367,7 +379,7 @@ namespace Encryphix{
                                                         if (result == DialogResult.No) return;
                                                         SafeDeleteFile(outputFile);
                                                     }
-                                                    DecryptFileDirect(currentFilePath, outputFile, password, null);
+                                                    DecryptFileDirect(currentFilePath, outputFile, password, null, deleteOriginal);
                                                 }
                                             }
                                         }
@@ -394,10 +406,10 @@ namespace Encryphix{
                         //
                         Invoke(new Action(() =>{
                             FAF_DGV.Rows.Clear();
-                            DragAndDropLabel.Visible = true;
                             Progress_BG.Visible = false;
                             TextBox_Password.Text = string.Empty;
                             TextBox_SaveFolder.Text = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+                            CheckOrjFileDelete.Checked = false;
                             UpdateProgressBar(0);
                             Text = TS_VersionEngine.TS_SofwareVersion(0, Program.ts_version_mode);
                             _ = ShowMessageBoxAsync(1, p_mode ? softwareLang.TSReadLangs("EncryphixUI", "eui_decrypt_success") : softwareLang.TSReadLangs("EncryphixUI", "eui_encrypt_success"));
@@ -443,26 +455,38 @@ namespace Encryphix{
         }
         // THEME MODE
         // ======================================================================================================
+        private ToolStripMenuItem selected_theme = null;
         private void Select_theme_active(object target_theme){
-            ToolStripMenuItem selected_theme = null;
+            if (target_theme == null)
+                return;
+            ToolStripMenuItem clicked_theme = (ToolStripMenuItem)target_theme;
+            if (selected_theme == clicked_theme)
+                return;
             Select_theme_deactive();
-            if (target_theme != null){
-                if (selected_theme != (ToolStripMenuItem)target_theme){
-                    selected_theme = (ToolStripMenuItem)target_theme;
-                    selected_theme.Checked = true;
-                }
-            }
+            selected_theme = clicked_theme;
+            selected_theme.Checked = true;
         }
         private void Select_theme_deactive(){
-            foreach (ToolStripMenuItem disabled_theme in themeToolStripMenuItem.DropDownItems){
-                disabled_theme.Checked = false;
+            foreach (ToolStripMenuItem theme in themeToolStripMenuItem.DropDownItems){
+                theme.Checked = false;
             }
         }
+        private void SystemThemeToolStripMenuItem_Click(object sender, EventArgs e){
+            themeSystem = 2; Theme_engine(GetSystemTheme(2)); SaveTheme(2); Select_theme_active(sender);
+        }
         private void LightThemeToolStripMenuItem_Click(object sender, EventArgs e){
-            if (theme != 1){ Theme_engine(1); Select_theme_active(sender); }
+            themeSystem = 0; Theme_engine(1); SaveTheme(1); Select_theme_active(sender);
         }
         private void DarkThemeToolStripMenuItem_Click(object sender, EventArgs e){
-            if (theme != 0){ Theme_engine(0); Select_theme_active(sender); }
+            themeSystem = 0; Theme_engine(0); SaveTheme(0); Select_theme_active(sender);
+        }
+        private void TSUseSystemTheme() { if (themeSystem == 2) Theme_engine(GetSystemTheme(2)); }
+        private void SaveTheme(int ts){
+            // SAVE CURRENT THEME
+            try{
+                TSSettingsSave software_setting_save = new TSSettingsSave(ts_sf);
+                software_setting_save.TSWriteSettings(ts_settings_container, "ThemeStatus", Convert.ToString(ts));
+            }catch (Exception){ }
         }
         // THEME ENGINE
         // ======================================================================================================
@@ -470,7 +494,7 @@ namespace Encryphix{
             try{
                 theme = ts;
                 //
-                TSSetWindowTheme(Handle, theme);
+                TSThemeModeHelper.SetThemeMode(ts == 0);
                 //
                 if (theme == 1){
                     // SETTINGS
@@ -533,9 +557,6 @@ namespace Encryphix{
                 FAF_DGV.DefaultCellStyle.SelectionBackColor = TS_ThemeEngine.ColorMode(theme, "AccentColor");
                 FAF_DGV.DefaultCellStyle.SelectionForeColor = TS_ThemeEngine.ColorMode(theme, "DataGridSelectionColor");
                 //
-                DragAndDropLabel.BackColor = TS_ThemeEngine.ColorMode(theme, "UIBGColor2");
-                DragAndDropLabel.ForeColor = TS_ThemeEngine.ColorMode(theme, "AccentColorText");
-                //
                 Progress_BG.BackColor = TS_ThemeEngine.ColorMode(theme, "UIBGColor");
                 Progress_FE.BackColor = TS_ThemeEngine.ColorMode(theme, "AccentColor");
                 //
@@ -560,11 +581,6 @@ namespace Encryphix{
                     }
                 }
                 Software_other_page_preloader();
-                // SAVE CURRENT THEME
-                try{
-                    TSSettingsSave software_setting_save = new TSSettingsSave(ts_sf);
-                    software_setting_save.TSWriteSettings(ts_settings_container, "ThemeStatus", Convert.ToString(ts));
-                }catch (Exception){ }
             }catch (Exception){ }
         }
         private void SetMenuStripColors(MenuStrip menuStrip, Color bgColor, Color fgColor){
@@ -662,6 +678,7 @@ namespace Encryphix{
                 themeToolStripMenuItem.Text = software_lang.TSReadLangs("HeaderMenu", "header_menu_theme");
                 lightThemeToolStripMenuItem.Text = software_lang.TSReadLangs("HeaderThemes", "theme_light");
                 darkThemeToolStripMenuItem.Text = software_lang.TSReadLangs("HeaderThemes", "theme_dark");
+                systemThemeToolStripMenuItem.Text = software_lang.TSReadLangs("HeaderThemes", "theme_system");
                 // LANGS
                 languageToolStripMenuItem.Text = software_lang.TSReadLangs("HeaderMenu", "header_menu_language");
                 englishToolStripMenuItem.Text = software_lang.TSReadLangs("HeaderLangs", "lang_en");
@@ -683,7 +700,6 @@ namespace Encryphix{
                 FAF_DGV.Columns[1].HeaderText = software_lang.TSReadLangs("EncryphixGraphics", "eg_faf_size");
                 FAF_DGV.Columns[2].HeaderText = software_lang.TSReadLangs("EncryphixGraphics", "eg_faf_status");
                 //
-                DragAndDropLabel.Text = software_lang.TSReadLangs("EncryphixGraphics", "eg_middle");
                 BtnSelect.Text = " " + software_lang.TSReadLangs("EncryphixGraphics", "eg_select");
                 Label_Password.Text = software_lang.TSReadLangs("EncryphixGraphics", "eg_password_label");
                 Label_SaveFolder.Text = software_lang.TSReadLangs("EncryphixGraphics", "eg_saved_folder_label");
@@ -831,7 +847,7 @@ namespace Encryphix{
                         TS_MessageBoxEngine.TS_MessageBox(this, 1, string.Format(software_lang.TSReadLangs("HeaderHelp", "header_help_info_notification"), ts_wizard_name));
                     }
                 }else{
-                    DialogResult ts_wizard_query = TS_MessageBoxEngine.TS_MessageBox(this, 5, string.Format(software_lang.TSReadLangs("TSWizard", "tsw_content"), software_lang.TSReadLangs("HeaderMenu", "header_menu_ts_wizard"), Application.CompanyName, "\n\n", Application.ProductName, Application.CompanyName, "\n\n"), string.Format(software_lang.TSReadLangs("TSWizard", "tsw_title"), Application.ProductName));
+                    DialogResult ts_wizard_query = TS_MessageBoxEngine.TS_MessageBox(this, 5, string.Format(software_lang.TSReadLangs("TSWizard", "tsw_content"), software_lang.TSReadLangs("HeaderMenu", "header_menu_ts_wizard"), Application.CompanyName, "\n\n", Application.ProductName, Application.CompanyName, "\n\n"), string.Format("{0} - {1}", Application.ProductName, ts_wizard_name));
                     if (ts_wizard_query == DialogResult.Yes){
                         Process.Start(new ProcessStartInfo(TS_LinkSystem.ts_wizard) { UseShellExecute = true });
                     }

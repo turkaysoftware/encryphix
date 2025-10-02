@@ -11,7 +11,7 @@ namespace Encryphix{
         public const string ZipExtension = ".zip";
         public const string EncryptedExtension = ".aes";
         //
-        public static Func<string, string> GetErrorMessage = key =>{
+        public static Func<string, string> GetErrorMessage = key => {
             if (EncryphixMain.TSProtectionErrorMessages.Messages.TryGetValue(key, out var msg)){
                 return msg;
             }
@@ -37,14 +37,16 @@ namespace Encryphix{
         }
         // DECRYPT FOLDER
         // ======================================================================================================
-        public static void DecryptFileToFolder(string encryptedFilePath, string outputFolderPath, string password, Action<int> reportProgress = null){
+        public static void DecryptFileToFolder(string encryptedFilePath, string outputFolderPath, string password, Action<int> reportProgress = null, bool deleteOriginal = true){
             string zipPath = Path.Combine(Path.GetDirectoryName(encryptedFilePath), Path.GetFileNameWithoutExtension(encryptedFilePath));
             zipPath += ZipExtension;
             try{
                 DecryptFile(encryptedFilePath, zipPath, password, reportProgress);
                 ZipFile.ExtractToDirectory(zipPath, outputFolderPath);
                 SafeDeleteFile(zipPath);
-                SafeDeleteFile(encryptedFilePath);
+                if (deleteOriginal && File.Exists(encryptedFilePath)){
+                    SafeDeleteFile(encryptedFilePath);
+                }
             }catch (CryptographicException){
                 SafeDeleteFile(zipPath);
                 throw new InvalidDataException(GetErrorMessage("InvalidPasswordOrCorruptFile"));
@@ -103,10 +105,12 @@ namespace Encryphix{
         }
         // DECRYPT FILE (DIRECT)
         // ======================================================================================================
-        public static void DecryptFileDirect(string encryptedFilePath, string outputFilePath, string password, Action<int> reportProgress = null){
+        public static void DecryptFileDirect(string encryptedFilePath, string outputFilePath, string password, Action<int> reportProgress = null, bool deleteOriginal = true){
             try{
                 DecryptFile(encryptedFilePath, outputFilePath, password, reportProgress);
-                SafeDeleteFile(encryptedFilePath);
+                if (deleteOriginal && File.Exists(encryptedFilePath)){
+                    SafeDeleteFile(encryptedFilePath);
+                }
             }catch (CryptographicException){
                 throw new InvalidDataException(GetErrorMessage("InvalidPasswordOrCorruptFile"));
             }catch (Exception ex){
