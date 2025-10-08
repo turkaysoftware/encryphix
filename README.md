@@ -43,6 +43,7 @@ With these instructions, you can download and use the correct version of Encryph
 
 - English
 - Turkish
+- **For translation support: [Translation Guide for Encryphix](https://github.com/turkaysoftware/encryphix/discussions/1)**
 
 # Supported Themes
 
