@@ -77,10 +77,12 @@ With these instructions, you can download and use the correct version of Encryph
 | **Theme:** System | F3 |
 | **Start:** Windowed | F4 |
 | **Start:** Full Screen | F5 |
+| **Safety Warnings:** On | F6 |
+| **Safety Warnings:** Off | F7 |
 
 | Extras | Key |
 | -- | :--: |
 | **Check Update** | F11 |
 | **About** | F12 |
 | **TS Wizard** | CTRL + Shift + S |
-| **Buy Me a Coffee** | CTRL + Shift + D |
+| **Donate** | CTRL + Shift + D |
