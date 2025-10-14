@@ -24,7 +24,7 @@
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
-    <ApplicationVersion>25.10.0.%2a</ApplicationVersion>
+    <ApplicationVersion>25.11.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -171,9 +171,13 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="EncryphixLogo.ico" />
-    <None Include="encryphix_images\encryphix_ui\theme_light\ct_bmac_mc_light.png" />
-    <None Include="encryphix_images\encryphix_ui\theme_dark\ct_bmac_mc_dark.png" />
+    <None Include="encryphix_images\encryphix_ui\theme_light\tm_donate_mc_light.png" />
+    <None Include="encryphix_images\encryphix_ui\theme_light\tm_donate_light.png" />
+    <None Include="encryphix_images\encryphix_ui\theme_dark\tm_donate_mc_dark.png" />
+    <None Include="encryphix_images\encryphix_ui\theme_dark\tm_donate_dark.png" />
     <None Include="encryphix_images\ts_preloader\ts_preloader.jpg" />
+    <None Include="encryphix_images\encryphix_ui\theme_light\tm_safety_warnings_light.png" />
+    <None Include="encryphix_images\encryphix_ui\theme_dark\tm_safety_warnings_dark.png" />
     <None Include="encryphix_images\encryphix_ui\theme_dark\tm_ts_wizard_dark.png" />
     <None Include="encryphix_images\encryphix_ui\theme_light\tm_ts_wizard_light.png" />
     <None Include="encryphix_images\encryphix_ui\theme_light\tm_update_light.png" />
@@ -181,7 +185,6 @@
     <None Include="encryphix_images\encryphix_ui\theme_light\tm_startup_light.png" />
     <None Include="encryphix_images\encryphix_ui\theme_light\tm_settings_light.png" />
     <None Include="encryphix_images\encryphix_ui\theme_light\tm_language_light.png" />
-    <None Include="encryphix_images\encryphix_ui\theme_light\tm_bmac_light.png" />
     <None Include="encryphix_images\encryphix_ui\theme_light\tm_about_light.png" />
     <None Include="encryphix_images\encryphix_ui\theme_light\ct_show_password_light.png" />
     <None Include="encryphix_images\encryphix_ui\theme_light\ct_hide_password_light.png" />
@@ -193,7 +196,6 @@
     <None Include="encryphix_images\encryphix_ui\theme_dark\tm_startup_dark.png" />
     <None Include="encryphix_images\encryphix_ui\theme_dark\tm_settings_dark.png" />
     <None Include="encryphix_images\encryphix_ui\theme_dark\tm_language_dark.png" />
-    <None Include="encryphix_images\encryphix_ui\theme_dark\tm_bmac_dark.png" />
     <None Include="encryphix_images\encryphix_ui\theme_dark\tm_about_dark.png" />
     <None Include="encryphix_images\encryphix_ui\theme_dark\ct_show_password_dark.png" />
     <None Include="encryphix_images\encryphix_ui\theme_dark\ct_hide_password_dark.png" />
@@ -224,5 +226,6 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -19,13 +19,13 @@ namespace Encryphix{
         };
         // ENCRYPT FOLDER
         // ======================================================================================================
-        public static void EncryptFolder(string folderPath, string password, string outputDirectory = null, Action<int> reportProgress = null, bool deleteOriginal = true){
+        public static void EncryptFolder(string folderPath, string password, string outputDirectory = null, Action<int> reportProgress = null, bool deleteOriginal = false, CompressionLevel compressionLevel = CompressionLevel.NoCompression){
             string folderName = Path.GetFileName(folderPath.TrimEnd(Path.DirectorySeparatorChar));
             string zipPath = Path.Combine(outputDirectory ?? Path.GetDirectoryName(folderPath), folderName + ZipExtension);
-            string encryptedPath = zipPath + EncryptedExtension;
+            string encryptedPath = Path.Combine(outputDirectory ?? Path.GetDirectoryName(folderPath), folderName + EncryptedExtension);
             SafeDeleteFile(encryptedPath);
             try{
-                ZipFile.CreateFromDirectory(folderPath, zipPath, CompressionLevel.NoCompression, false);
+                ZipFile.CreateFromDirectory(folderPath, zipPath, compressionLevel, false);
                 EncryptFile(zipPath, encryptedPath, password, reportProgress);
                 SafeDeleteFile(zipPath);
                 if (deleteOriginal && Directory.Exists(folderPath)){
@@ -37,9 +37,18 @@ namespace Encryphix{
         }
         // DECRYPT FOLDER
         // ======================================================================================================
-        public static void DecryptFileToFolder(string encryptedFilePath, string outputFolderPath, string password, Action<int> reportProgress = null, bool deleteOriginal = true){
-            string zipPath = Path.Combine(Path.GetDirectoryName(encryptedFilePath), Path.GetFileNameWithoutExtension(encryptedFilePath));
-            zipPath += ZipExtension;
+        public static void DecryptFileToFolder(string encryptedFilePath, string outputFolderPath, string password, Action<int> reportProgress = null, bool deleteOriginal = false){
+            string baseName = Path.GetFileName(encryptedFilePath);
+            bool isFolderEncrypted = IsEncryptedFolder(baseName);
+            string zipPath;
+            if (isFolderEncrypted){
+                string nameWithoutAes = Path.GetFileNameWithoutExtension(encryptedFilePath);
+                string nameWithoutZip = Path.GetFileNameWithoutExtension(nameWithoutAes);
+                zipPath = Path.Combine(Path.GetDirectoryName(encryptedFilePath), nameWithoutZip + ZipExtension);
+            }else{
+                string nameWithoutAes = Path.GetFileNameWithoutExtension(encryptedFilePath);
+                zipPath = Path.Combine(Path.GetDirectoryName(encryptedFilePath), nameWithoutAes + ZipExtension);
+            }
             try{
                 DecryptFile(encryptedFilePath, zipPath, password, reportProgress);
                 ZipFile.ExtractToDirectory(zipPath, outputFolderPath);
@@ -118,6 +127,7 @@ namespace Encryphix{
             }
         }
         // SAFE DELETE FILE
+        // ======================================================================================================
         public static void SafeDeleteFile(string path){
             try{
                 if (File.Exists(path))
@@ -129,6 +139,7 @@ namespace Encryphix{
             }
         }
         // SAFE DELETE DIRECTORY
+        // ======================================================================================================
         public static void SafeDeleteDirectory(string path){
             try{
                 if (Directory.Exists(path))
@@ -156,6 +167,13 @@ namespace Encryphix{
                     reportProgress?.Invoke(percent);
                 }
             }
+        }
+        // CHECK EXTENSION LIST
+        // ======================================================================================================
+        public static bool IsEncryptedFolder(string fileName){
+            string[] parts = fileName.Split('.');
+            int len = parts.Length;
+            return len >= 2 && parts[len - 2].Equals("zip", StringComparison.OrdinalIgnoreCase) && parts[len - 1].Equals("aes", StringComparison.OrdinalIgnoreCase);
         }
     }
 }

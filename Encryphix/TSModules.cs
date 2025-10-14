@@ -26,7 +26,7 @@ namespace Encryphix{
             github_link         = "https://github.com/turkaysoftware",
             // Other Links
             ts_wizard           = "https://www.turkaysoftware.com/ts-wizard",
-            ts_bmac             = "https://buymeacoffee.com/turkaysoftware";
+            ts_donate           = "https://buymeacoffee.com/turkaysoftware";
         }
         // VERSIONS
         // ======================================================================================================
@@ -271,6 +271,7 @@ namespace Encryphix{
                 //
                 { "UIBGColor", Color.White },
                 { "UIBGColor2", Color.FromArgb(236, 242, 248) },
+                { "UIBGColor3", Color.FromArgb(207, 207, 207) },
                 //
                 { "DataGridBGColor", Color.White },
                 { "DataGridFEColor", Color.FromArgb(51, 51, 51) },
@@ -309,6 +310,7 @@ namespace Encryphix{
                 //
                 { "UIBGColor", Color.FromArgb(25, 31, 42) },
                 { "UIBGColor2", Color.FromArgb(21, 23, 32) },
+                { "UIBGColor3", Color.FromArgb(37, 47, 61) },
                 //
                 { "DataGridBGColor", Color.FromArgb(25, 31, 42) },
                 { "DataGridFEColor", Color.WhiteSmoke },

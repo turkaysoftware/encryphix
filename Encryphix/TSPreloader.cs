@@ -81,6 +81,8 @@ namespace Encryphix{
                         software_settings_save.TSWriteSettings(ts_settings_container, "LanguageStatus", TSPreloaderSetDefaultLanguage(ui_lang));
                         // SET STARTUP MODE
                         software_settings_save.TSWriteSettings(ts_settings_container, "StartupStatus", "0");
+                        // SET SAFETY WARNINGS MODE
+                        software_settings_save.TSWriteSettings(ts_settings_container, "SafetyWarnings", "1");
                     }catch (Exception ex){
                         // ERROR LOG
                         LogError(ex);
