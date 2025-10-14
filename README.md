@@ -11,9 +11,9 @@
 
 [Click here](https://www.turkaysoftware.com/encryphix) for full specifications.
 
-<img width="1010" height="633" alt="Encryphix UI - Dark" src="https://github.com/user-attachments/assets/7f41886c-dcb2-435e-8870-a25cf68390c7" />
+<img width="1010" height="633" alt="Encryphix UI - Dark" src="https://github.com/user-attachments/assets/8d0b83c7-2a0c-475a-b6c0-caa92c209a17" />
 
-<img width="1010" height="633" alt="Encryphix UI - Light" src="https://github.com/user-attachments/assets/76915b66-187e-4ee2-9440-d04daa6b08b1" />
+<img width="1010" height="633" alt="Encryphix UI - Light" src="https://github.com/user-attachments/assets/b028898e-aaa5-4286-8f22-39ead6f40afc" />
 
 # Download Encryphix
 
