@@ -9,7 +9,7 @@
 
 [Click here](https://www.turkaysoftware.com/encryphix) for full specifications.
 
-<img width="1010" height="633" alt="Encryphix UI" src="https://github.com/user-attachments/assets/bf7070c1-8c7c-4208-b032-9970bf56757e" />
+<img width="1010" height="633" alt="Encryphix UI" src="https://github.com/user-attachments/assets/85802025-c96a-458b-b892-564039b507c0" />
 
 # Download Encryphix
 
