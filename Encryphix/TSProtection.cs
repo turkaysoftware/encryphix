@@ -1,28 +1,38 @@
 ﻿using System;
 using System.IO;
+using System.Text;
 using System.IO.Compression;
 using System.Security.Cryptography;
 
 namespace Encryphix{
     internal class TSProtection{
-        private const int IterationCount = 100000;
-        private const int SaltSize = 16;
-        private const int BufferSize = 4 * 1024 * 1024; // 4 MB
-        public const string ZipExtension = ".zip";
-        public const string EncryptedExtension = ".aes";
-        //
+        // Meta Data Sequence: [Salt (16)] [FileType (1)] [ExtLength (4)] [Extension (Variable)] [IV (16)] [CipherData]
+        // ---------------------------------------------------------------------------------------------------------
+        private const int IterationCount = 210_000;         // Iteration Count
+        private const int SaltSize = 16;                    // Salt Size Count
+        private const int BufferSize = 4 * 1024 * 1024;     // Buffer Size - 4 MB
+        public const string ZipExtension = ".zip";          // ZIP Extension
+        public const string EncryptedExtension = ".aes";    // Encryption Extension
+        // ---------------------------------------------------------------------------------------------------------
+        private const byte FileType_Single = 0x01;          // Single File Hex Code
+        private const byte FileType_Folder = 0x02;          // Folder (ZIP) Hex Code
+        private const int FileTypeSize = 1;                 // 1 Byte For File Type
+        private const int ExtensionLengthSize = 4;          // To store the extension length, 4 bytes (Int32)
+        // ---------------------------------------------------------------------------------------------------------
+        // MODULE USER FRIENDLY MESSAGE SEND
+        // ======================================================================================================
         public static Func<string, string> GetErrorMessage = key => {
             if (EncryphixMain.TSProtectionErrorMessages.Messages.TryGetValue(key, out var msg)){
                 return msg;
             }
-            return "Unknown error.";
+            return GetErrorMessage("UnknownError");
         };
         // ENCRYPT FOLDER
         // ======================================================================================================
         public static void EncryptFolder(string folderPath, string password, string outputDirectory = null, Action<int> reportProgress = null, bool deleteOriginal = false, CompressionLevel compressionLevel = CompressionLevel.NoCompression){
             string folderName = Path.GetFileName(folderPath.TrimEnd(Path.DirectorySeparatorChar));
-            string zipPath = Path.Combine(outputDirectory ?? Path.GetDirectoryName(folderPath), folderName + ZipExtension);
-            string encryptedPath = Path.Combine(outputDirectory ?? Path.GetDirectoryName(folderPath), folderName + EncryptedExtension);
+            string zipPath = Path.Combine(outputDirectory ?? Path.GetDirectoryName(folderPath), GetUniquePath(folderName + ZipExtension));
+            string encryptedPath = Path.Combine(outputDirectory ?? Path.GetDirectoryName(folderPath), GetUniquePath(folderName + EncryptedExtension));
             SafeDeleteFile(encryptedPath);
             try{
                 ZipFile.CreateFromDirectory(folderPath, zipPath, compressionLevel, false);
@@ -32,51 +42,8 @@ namespace Encryphix{
                     SafeDeleteDirectory(folderPath);
                 }
             }catch (Exception ex){
+                Console.WriteLine(ex.Message);
                 throw new IOException(GetErrorMessage("FolderEncryptionError"), ex);
-            }
-        }
-        // DECRYPT FOLDER
-        // ======================================================================================================
-        public static void DecryptFileToFolder(string encryptedFilePath, string outputFolderPath, string password, Action<int> reportProgress = null, bool deleteOriginal = false){
-            string baseName = Path.GetFileName(encryptedFilePath);
-            bool isFolderEncrypted = IsEncryptedFolder(baseName);
-            string zipPath;
-            if (isFolderEncrypted){
-                string nameWithoutAes = Path.GetFileNameWithoutExtension(encryptedFilePath);
-                string nameWithoutZip = Path.GetFileNameWithoutExtension(nameWithoutAes);
-                zipPath = Path.Combine(Path.GetDirectoryName(encryptedFilePath), nameWithoutZip + ZipExtension);
-            }else{
-                string nameWithoutAes = Path.GetFileNameWithoutExtension(encryptedFilePath);
-                zipPath = Path.Combine(Path.GetDirectoryName(encryptedFilePath), nameWithoutAes + ZipExtension);
-            }
-            try{
-                DecryptFile(encryptedFilePath, zipPath, password, reportProgress);
-                using (ZipArchive archive = ZipFile.OpenRead(zipPath)){
-                    string fullTarget = Path.GetFullPath(outputFolderPath + Path.DirectorySeparatorChar);
-                    foreach (ZipArchiveEntry entry in archive.Entries){
-                        if (string.IsNullOrEmpty(entry.Name))
-                            continue;
-                        if (Path.IsPathRooted(entry.FullName) || entry.FullName.IndexOf(':') >= 0)
-                            continue;
-                        string relative = entry.FullName.Replace('/', Path.DirectorySeparatorChar).Replace('\\', Path.DirectorySeparatorChar).TrimStart(Path.DirectorySeparatorChar);
-                        string destPath = Path.GetFullPath(Path.Combine(outputFolderPath, relative));
-                        if (!destPath.StartsWith(fullTarget, StringComparison.OrdinalIgnoreCase))
-                            continue;
-                        string destDir = Path.GetDirectoryName(destPath);
-                        if (!Directory.Exists(destDir))
-                            Directory.CreateDirectory(destDir);
-                        entry.ExtractToFile(destPath, true);
-                    }
-                }
-                SafeDeleteFile(zipPath);
-                if (deleteOriginal && File.Exists(encryptedFilePath))
-                    SafeDeleteFile(encryptedFilePath);
-            }catch (CryptographicException){
-                SafeDeleteFile(zipPath);
-                throw new InvalidDataException(GetErrorMessage("InvalidPasswordOrCorruptFile"));
-            }catch (Exception ex){
-                SafeDeleteFile(zipPath);
-                throw new IOException(GetErrorMessage("FileOpenError"), ex);
             }
         }
         // ENCRYPT FILE
@@ -84,14 +51,30 @@ namespace Encryphix{
         public static void EncryptFile(string inputFile, string outputFile, string password, Action<int> reportProgress = null, bool deleteOriginal = true){
             byte[] salt = new byte[SaltSize];
             using (var rng = RandomNumberGenerator.Create()) rng.GetBytes(salt);
-            using (FileStream fsOut = new FileStream(outputFile, FileMode.Create))
+            string originalExtension;
+            byte fileType;
+            if (Path.GetExtension(inputFile).Equals(ZipExtension, StringComparison.OrdinalIgnoreCase)){
+                originalExtension = ZipExtension;
+                fileType = FileType_Folder;
+            }else{
+                originalExtension = Path.GetExtension(inputFile);
+                fileType = FileType_Single;
+            }
+            byte[] extensionBytes = Encoding.UTF8.GetBytes(originalExtension);
+            byte[] extensionLengthBytes = BitConverter.GetBytes(extensionBytes.Length);
+            using (FileStream fsOut = new FileStream(GetUniquePath(outputFile), FileMode.Create))
             using (Aes aes = Aes.Create()){
                 fsOut.Write(salt, 0, salt.Length);
-                var key = new Rfc2898DeriveBytes(password, salt, IterationCount);
+                fsOut.Write(new byte[] { fileType }, 0, FileTypeSize);
+                fsOut.Write(extensionLengthBytes, 0, extensionLengthBytes.Length);
+                fsOut.Write(extensionBytes, 0, extensionBytes.Length);
+                //
+                var key = new Rfc2898DeriveBytes(password, salt, IterationCount, HashAlgorithmName.SHA512);
                 aes.Key = key.GetBytes(32);
                 aes.GenerateIV();
                 aes.Mode = CipherMode.CBC;
                 aes.Padding = PaddingMode.PKCS7;
+                //
                 fsOut.Write(aes.IV, 0, aes.IV.Length);
                 using (CryptoStream cs = new CryptoStream(fsOut, aes.CreateEncryptor(), CryptoStreamMode.Write))
                 using (FileStream fsIn = new FileStream(inputFile, FileMode.Open)){
@@ -104,15 +87,35 @@ namespace Encryphix{
         }
         // DECRYPT FILE
         // ======================================================================================================
-        private static void DecryptFile(string inputFile, string outputFile, string password, Action<int> reportProgress = null){
+        public static string DecryptFile(string inputFile, string outputFile, string password, Action<int> reportProgress = null){
+            string originalExtension = string.Empty;
             using (FileStream fsIn = new FileStream(inputFile, FileMode.Open))
             using (Aes aes = Aes.Create()){
                 byte[] salt = new byte[SaltSize];
                 if (fsIn.Read(salt, 0, salt.Length) != salt.Length){
                     throw new CryptographicException(GetErrorMessage("SaltReadError"));
                 }
-                var key = new Rfc2898DeriveBytes(password, salt, IterationCount);
+                byte[] fileType = new byte[FileTypeSize];
+                if (fsIn.Read(fileType, 0, fileType.Length) != fileType.Length){
+                    throw new CryptographicException(GetErrorMessage("FileTypeReadError"));
+                }
+                byte[] extLengthBytes = new byte[ExtensionLengthSize];
+                if (fsIn.Read(extLengthBytes, 0, extLengthBytes.Length) != extLengthBytes.Length){
+                    throw new CryptographicException(GetErrorMessage("ExtLengthReadError"));
+                }
+                int extLength = BitConverter.ToInt32(extLengthBytes, 0);
+                long remainingBytes = fsIn.Length - fsIn.Position;
+                if (extLength < 0 || extLength > 255 || (long)extLength > (remainingBytes - (aes.BlockSize / 8))){
+                    throw new InvalidDataException(GetErrorMessage("InvalidExtensionLength"));
+                }
+                byte[] extensionBytes = new byte[extLength];
+                if (fsIn.Read(extensionBytes, 0, extensionBytes.Length) != extensionBytes.Length){
+                    throw new CryptographicException(GetErrorMessage("ExtensionReadError"));
+                }
+                originalExtension = Encoding.UTF8.GetString(extensionBytes);
+                var key = new Rfc2898DeriveBytes(password, salt, IterationCount, HashAlgorithmName.SHA512);
                 aes.Key = key.GetBytes(32);
+                //
                 byte[] iv = new byte[aes.BlockSize / 8];
                 if (fsIn.Read(iv, 0, iv.Length) != iv.Length){
                     throw new CryptographicException(GetErrorMessage("IVReadError"));
@@ -120,50 +123,34 @@ namespace Encryphix{
                 aes.IV = iv;
                 aes.Mode = CipherMode.CBC;
                 aes.Padding = PaddingMode.PKCS7;
+                //
+                long totalMetaDataSize = SaltSize + FileTypeSize + ExtensionLengthSize + extLength + iv.Length;
+                long totalBytes = fsIn.Length - totalMetaDataSize;
                 using (CryptoStream cs = new CryptoStream(fsIn, aes.CreateDecryptor(), CryptoStreamMode.Read))
                 using (FileStream fsOut = new FileStream(outputFile, FileMode.Create)){
-                    long totalBytes = fsIn.Length - SaltSize - iv.Length;
-                    CopyStreamWithProgress(cs, fsOut, totalBytes, reportProgress);
+                    try{
+                        CopyStreamWithProgress(cs, fsOut, totalBytes, reportProgress);
+                    }catch (CryptographicException){
+                        fsOut.SetLength(0);
+                        throw new InvalidDataException(GetErrorMessage("InvalidPasswordOrCorruptFile"));
+                    }
                 }
             }
+            return originalExtension;
         }
-        // DECRYPT FILE (DIRECT)
+        // UNIQUE FOLDER & FILE NAME
         // ======================================================================================================
-        public static void DecryptFileDirect(string encryptedFilePath, string outputFilePath, string password, Action<int> reportProgress = null, bool deleteOriginal = true){
-            try{
-                DecryptFile(encryptedFilePath, outputFilePath, password, reportProgress);
-                if (deleteOriginal && File.Exists(encryptedFilePath)){
-                    SafeDeleteFile(encryptedFilePath);
-                }
-            }catch (CryptographicException){
-                throw new InvalidDataException(GetErrorMessage("InvalidPasswordOrCorruptFile"));
-            }catch (Exception ex){
-                throw new IOException(GetErrorMessage("FileOpenError"), ex);
+        public static string GetUniquePath(string orj_path){
+            string file_dir = Path.GetDirectoryName(orj_path);
+            string file_name = Path.GetFileNameWithoutExtension(orj_path);
+            string file_ext = Path.GetExtension(orj_path);
+            string new_file_path = orj_path;
+            int unique_count = 1;
+            while (File.Exists(new_file_path) || Directory.Exists(new_file_path)){
+                new_file_path = Path.Combine(file_dir, $"{file_name}_{unique_count}{file_ext}");
+                unique_count++;
             }
-        }
-        // SAFE DELETE FILE
-        // ======================================================================================================
-        public static void SafeDeleteFile(string path){
-            try{
-                if (File.Exists(path))
-                    File.Delete(path);
-            }catch (UnauthorizedAccessException){
-                throw new UnauthorizedAccessException(GetErrorMessage("AccessError"));
-            }catch (Exception ex){
-                throw new IOException(GetErrorMessage("UnknownError"), ex);
-            }
-        }
-        // SAFE DELETE DIRECTORY
-        // ======================================================================================================
-        public static void SafeDeleteDirectory(string path){
-            try{
-                if (Directory.Exists(path))
-                    Directory.Delete(path, true);
-            }catch (UnauthorizedAccessException){
-                throw new UnauthorizedAccessException(GetErrorMessage("AccessError"));
-            }catch (Exception ex){
-                throw new IOException(GetErrorMessage("UnknownError"), ex);
-            }
+            return new_file_path;
         }
         // COPY STREAM WITH PROGRESS
         // ======================================================================================================
@@ -183,12 +170,31 @@ namespace Encryphix{
                 }
             }
         }
-        // CHECK EXTENSION LIST
+        // SAFE DELETE FILE
         // ======================================================================================================
-        public static bool IsEncryptedFolder(string fileName){
-            string[] parts = fileName.Split('.');
-            int len = parts.Length;
-            return len >= 2 && parts[len - 2].Equals("zip", StringComparison.OrdinalIgnoreCase) && parts[len - 1].Equals("aes", StringComparison.OrdinalIgnoreCase);
+        public static void SafeDeleteFile(string path){
+            try{
+                if (File.Exists(path)){
+                    File.Delete(path);
+                }
+            }catch (UnauthorizedAccessException){
+                throw new UnauthorizedAccessException(GetErrorMessage("AccessError"));
+            }catch (Exception ex){
+                throw new IOException(GetErrorMessage("UnknownError"), ex);
+            }
+        }
+        // SAFE DELETE DIRECTORY
+        // ======================================================================================================
+        public static void SafeDeleteDirectory(string path){
+            try{
+                if (Directory.Exists(path)){
+                    Directory.Delete(path, true);
+                }
+            }catch (UnauthorizedAccessException){
+                throw new UnauthorizedAccessException(GetErrorMessage("AccessError"));
+            }catch (Exception ex){
+                throw new IOException(GetErrorMessage("UnknownError"), ex);
+            }
         }
     }
 }
