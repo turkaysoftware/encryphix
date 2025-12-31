@@ -42,8 +42,6 @@ With these instructions, you can download and use the correct version of Encryph
 - Compression Feature: You can compress your data while encrypting it.
 - [TS Wizard](https://www.turkaysoftware.com/ts-wizard) provides an automatic update and monitoring system.
 
-<img width="396" height="335" alt="Encryphix - Advanced Features" src="https://github.com/user-attachments/assets/17f7df9c-eb81-448a-bb05-d5395208b5ba" />
-
 # System Requirements
 
 |  | Minimum Requirements | Recommended Requirements |
@@ -51,22 +49,3 @@ With these instructions, you can download and use the correct version of Encryph
 | OS: | Windows 10 x64 | Windows 10 22H2 x64|
 | RAM: | 50 MB Free RAM | 75 MB Free RAM |
 | .NET: | .NET Framework 4.8.1 | .NET Framework 4.8.1 |
-
-# Shortcut Key Layouts
-
-| Main Features | Key |
-| -- | :--: |
-| **Theme:** Light | F1 |
-| **Theme:** Dark | F2 |
-| **Theme:** System | F3 |
-| **Start:** Windowed | F4 |
-| **Start:** Full Screen | F5 |
-| **Safety Warnings:** On | F6 |
-| **Safety Warnings:** Off | F7 |
-
-| Extras | Key |
-| -- | :--: |
-| **Check Update** | F11 |
-| **About** | F12 |
-| **TS Wizard** | CTRL + Shift + S |
-| **Donate** | CTRL + Shift + D |
