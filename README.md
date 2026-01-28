@@ -37,7 +37,7 @@ With these instructions, you can download and use the correct version of Encryph
 
 # Advanced Features
 - **Multi-Architecture Support:** Fully compatible with x64-x86 and ARM processors.
-- **Multi-Language System:** Fully supports 14 or more languages. **Supported Languages:** _Arabic, Chinese, English, Dutch, French, German, Hindi, Italian, Japanase, Korean, Polish, Portuguese, Russian, Spanish, Turkish_ | **For translation support: [Translation Guide for Encryphix](https://github.com/turkaysoftware/encryphix/discussions/1)**
+- **Multi-Language System:** Fully supports 15 or more languages. **Supported Languages:** _Arabic, Chinese, English, Dutch, French, German, Hindi, Italian, Japanase, Korean, Polish, Portuguese, Russian, Spanish, Turkish_ | **For translation support: [Translation Guide for Encryphix](https://github.com/turkaysoftware/encryphix/discussions/1)**
 - Advanced interface features such as Light / Dark / System Theme.
 - Compression Feature: You can compress your data while encrypting it.
 - [TS Wizard](https://www.turkaysoftware.com/ts-wizard) provides an automatic update and monitoring system.
