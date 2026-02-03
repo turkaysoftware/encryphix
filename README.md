@@ -1,51 +1,82 @@
-# Encryphix - File and Folder Encryption Software
+# 🔒 Encryphix | Advanced File & Folder Encryption Software
 
-> [!TIP]
-**_This program is completely free to use. I do not earn any income from its use. However, you can support me by donating to the address below so that I can continue my work 💚 Even if you cannot provide financial support, you can help spread the software and increase its visibility by sharing it._**
+![GitHub Repo stars](https://img.shields.io/github/stars/turkaysoftware/encryphix?style=for-the-badge&color=gold)
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/turkaysoftware/encryphix?style=for-the-badge&color=blue)
+![GitHub license](https://img.shields.io/github/license/turkaysoftware/encryphix?style=for-the-badge)
+![Platform](https://img.shields.io/badge/platform-Windows-0078D4?style=for-the-badge&logo=windows)
 
-**[DONATE LINK](https://buymeacoffee.com/turkaysoftware)**
+**Encryphix** is a high-security **File and Folder Encryption Software** developed by **Eray Türkay**. It provides professional-grade protection for your sensitive data using industry-standard **PBKDF2** and **AES-256** encryption algorithms. Designed for users who demand both security and simplicity, Encryphix ensures your private files remain truly private.
 
-**Encryphix** is a **File and Folder Encryption Software** developed by **Eray Türkay**. It can encrypt and decrypt files and folders with high security using PBKDF2 and AES-256. Programmed exclusively in **C# and .NET Framework**. And it is **completely free**!
+---
 
-[Click here](https://www.turkaysoftware.com/encryphix) for full specifications.
+### ☕ Support the Project
+Encryphix is completely free to use. If you value your data's security and want to support the project, consider making a donation!
 
-<img width="1010" height="633" alt="Encryphix UI" src="https://github.com/user-attachments/assets/7aacb028-a399-4021-b431-e215dd073bb9" />
+[![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-Donate-orange?style=for-the-badge&logo=buy-me-a-coffee)](https://buymeacoffee.com/turkaysoftware)
 
-# Download Encryphix
+[Official Website](https://www.turkaysoftware.com/encryphix) | [Report a Bug](https://github.com/turkaysoftware/encryphix/issues)
 
-Download: [Encryphix Latest Version](https://github.com/turkaysoftware/encryphix/releases/latest)
+---
 
-# How to use Encryphix?
+## ✨ Key Features
 
-After downloading the Encryphix application, you will find two options: **Encryphix_x64.exe** and **Encryphix_arm64.exe**. Which file to choose depends on your computer’s processor architecture. Here’s a guide to help you decide which version is right for you:
+* 🛡️ **Military-Grade Security:** Utilizes **AES-256** and **PBKDF2** for robust data encryption.
+* 🚀 **Pure Performance:** Developed exclusively in **C# and .NET Framework** with no external libraries or dependencies.
+* 🌓 **Modern UI:** Sophisticated interface with Light, Dark, and System theme support.
+* 🌍 **Multilingual:** Fully supports 15+ languages including English, Turkish, German, and more.
+* 📦 **Portable:** No installation required. Carry your encryption tool anywhere and run it instantly.
+* 🆓 **Completely Free:** High-end encryption features provided at no cost to the user.
 
-#### 1. Encryphix_x64.exe
-- **Encryphix_x64.exe** is designed for computers with an x64 (64-bit) processor architecture.
-- If you’re using a standard Windows PC or laptop, you likely need the x64 version.
-- Most devices with Intel or AMD processors use the x64 architecture.
+---
 
-#### 2. Encryphix_arm64.exe
-- **Encryphix_arm64.exe** is specifically developed for devices with an ARM64 architecture.
-- It’s suitable for Windows devices that use **ARM processors** (such as some Surface models).
-- ARM architecture is commonly found in devices that prioritize lower power consumption and portability.
+## 🛠️ Advanced Capabilities
 
-#### Usage Instructions
-1. **After downloading the ZIP file, make sure to extract all files from the ZIP**. The Encryphix application is a portable software, so it doesn’t require installation, but all files must be in the same folder for it to run correctly.
-2. Once extracted, run the appropriate file for your device (**Encryphix_x64.exe** or **Encryphix_arm64.exe**) to start using the application immediately.
+Encryphix combines security with practical utility to offer a superior encryption experience:
 
-With these instructions, you can download and use the correct version of Encryphix for your device. If you need further assistance, please feel free to reach out!
+* **Secure Compression:** Optionally compress your data while encrypting it to save storage space.
+* **Folder & File Support:** Encrypt individual files or entire directory structures with equal ease.
+* **Multi-Architecture Support:** Fully compatible with both x64-x86 and ARM processor architectures.
+* **TS Wizard Integration:** Seamlessly works with [TS Wizard](https://www.turkaysoftware.com/ts-wizard) for update notifications and monitoring.
+* **Translation Support:** Community-backed localization via the [Translation Guide](https://github.com/turkaysoftware/encryphix/discussions/1).
 
-# Advanced Features
-- **Multi-Architecture Support:** Fully compatible with x64-x86 and ARM processors.
-- **Multi-Language System:** Fully supports 15 or more languages. **Supported Languages:** _Arabic, Chinese, English, Dutch, French, German, Hindi, Italian, Japanase, Korean, Polish, Portuguese, Russian, Spanish, Turkish_ | **For translation support: [Translation Guide for Encryphix](https://github.com/turkaysoftware/encryphix/discussions/1)**
-- Advanced interface features such as Light / Dark / System Theme.
-- Compression Feature: You can compress your data while encrypting it.
-- [TS Wizard](https://www.turkaysoftware.com/ts-wizard) provides an automatic update and monitoring system.
+---
 
-# System Requirements
+## 📸 Interface Preview
 
-|  | Minimum Requirements | Recommended Requirements |
-| -- | :--: | :--: |
-| OS: | Windows 10 x64 | Windows 10 22H2 x64|
-| RAM: | 50 MB Free RAM | 75 MB Free RAM |
-| .NET: | .NET Framework 4.8.1 | .NET Framework 4.8.1 |
+![Encryphix UI](https://github.com/user-attachments/assets/7aacb028-a399-4021-b431-e215dd073bb9)
+> *Secure your digital assets with Encryphix's powerful yet easy-to-use interface.*
+
+---
+
+## 💻 System Requirements
+
+| Feature | Minimum Requirements | Recommended Requirements |
+| :--- | :--- | :--- |
+| **OS** | Windows 10 x64 | Windows 10 22H2 x64 |
+| **RAM** | 50 MB Free RAM | 75 MB Free RAM |
+| **.NET** | .NET Framework 4.8.1 | .NET Framework 4.8.1 |
+
+---
+
+## 🚀 Getting Started
+
+1.  Navigate to the **[Releases](https://github.com/turkaysoftware/encryphix/releases/latest)** page.
+2.  Download the latest ZIP file.
+3.  **Extract all files from the ZIP** to a folder (The application requires all included files to be in the same directory).
+4.  Launch the executable:
+    * `Encryphix_x64.exe`: For standard 64-bit systems.
+    * `Encryphix_arm64.exe`: For ARM64-based Windows devices.
+
+---
+
+## 🛡️ Security & Integrity
+
+* **Industry Standards:** Uses verified PBKDF2 and AES-256 implementations.
+* **No Dependencies:** Built from scratch to ensure there are no hidden third-party vulnerabilities.
+* **Local Processing:** All encryption/decryption tasks are performed locally; your passwords and data never leave your PC.
+
+---
+
+## 📄 License
+
+This software is provided for free as part of the Türkay Software security suite.
