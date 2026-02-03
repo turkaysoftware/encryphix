@@ -1,9 +1,10 @@
 # 🔒 Encryphix | Advanced File & Folder Encryption Software
 
-![GitHub Repo stars](https://img.shields.io/github/stars/turkaysoftware/encryphix?style=for-the-badge&color=gold)
-![GitHub release (latest by date)](https://img.shields.io/github/v/release/turkaysoftware/encryphix?style=for-the-badge&color=blue)
-![GitHub license](https://img.shields.io/github/license/turkaysoftware/encryphix?style=for-the-badge)
-![Platform](https://img.shields.io/badge/platform-Windows-0078D4?style=for-the-badge&logo=windows)
+![GitHub all releases](https://img.shields.io/github/downloads/turkaysoftware/encryphix/total?style=for-the-badge&color=DF313F)
+![GitHub Repo stars](https://img.shields.io/github/stars/turkaysoftware/encryphix?style=for-the-badge&color=167C33)
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/turkaysoftware/encryphix?style=for-the-badge&color=9A194C)
+![Platform](https://img.shields.io/badge/platform-Windows-366194?style=for-the-badge&logo=windows)
+![GitHub license](https://img.shields.io/github/license/turkaysoftware/encryphix?style=for-the-badge&color=17796E)
 
 **Encryphix** is a high-security **File and Folder Encryption Software** developed by **Eray Türkay**. It provides professional-grade protection for your sensitive data using industry-standard **PBKDF2** and **AES-256** encryption algorithms. Designed for users who demand both security and simplicity, Encryphix ensures your private files remain truly private.
 
@@ -12,7 +13,7 @@
 ### ☕ Support the Project
 Encryphix is free and will always be. If you find it useful, consider supporting the development!
 
-[![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-Donate-orange?style=for-the-badge&logo=buy-me-a-coffee)](https://buymeacoffee.com/turkaysoftware)
+[![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-Donate-DF313F?style=for-the-badge&logo=buy-me-a-coffee)](https://buymeacoffee.com/turkaysoftware)
 
 [Official Website](https://www.turkaysoftware.com/encryphix) | [Report a Bug](https://github.com/turkaysoftware/encryphix/issues)
 
