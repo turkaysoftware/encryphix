@@ -10,7 +10,7 @@
 ---
 
 ### ☕ Support the Project
-Encryphix is completely free to use. If you value your data's security and want to support the project, consider making a donation!
+Encryphix is free and will always be. If you find it useful, consider supporting the development!
 
 [![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-Donate-orange?style=for-the-badge&logo=buy-me-a-coffee)](https://buymeacoffee.com/turkaysoftware)
 
@@ -49,7 +49,6 @@ Encryphix combines security with practical utility to offer a superior encryptio
 ## 📸 Interface Preview
 
 ![Encryphix UI](https://github.com/user-attachments/assets/7aacb028-a399-4021-b431-e215dd073bb9)
-> *Secure your digital assets with Encryphix's powerful yet easy-to-use interface.*
 
 ---
 
@@ -67,21 +66,21 @@ Encryphix combines security with practical utility to offer a superior encryptio
 
 1.  Navigate to the **[Releases](https://github.com/turkaysoftware/encryphix/releases/latest)** page.
 2.  Download the latest ZIP file.
-3.  **Extract all files from the ZIP** to a folder (The application requires all included files to be in the same directory).
+3.  **Extract all files from the ZIP** (Important: Application requires all folder contents to run correctly).
 4.  Launch the executable:
-    * `Encryphix_x64.exe`: For standard 64-bit systems.
-    * `Encryphix_arm64.exe`: For ARM64-based Windows devices.
+    * `Encryphix_x64.exe`: For standard 64-bit Intel/AMD systems.
+    * `Encryphix_arm64.exe`: For ARM-based devices like Surface Pro.
 
 ---
 
-## 🛡️ Security & Integrity
+## 🛡️ Security
 
-* **Industry Standards:** Uses verified PBKDF2 and AES-256 implementations.
-* **No Dependencies:** Built from scratch to ensure there are no hidden third-party vulnerabilities.
-* **Local Processing:** All encryption/decryption tasks are performed locally; your passwords and data never leave your PC.
+* **Zero Data Export Policy:** Your privacy is our priority; no data leaves your machine.
+* **No Dependencies:** Developed entirely from scratch using its own source code, there are no risks from security vulnerabilities in third-party libraries.
+* **Open Source:** All source code for the program is open and can be reviewed by anyone.
 
 ---
 
 ## 📄 License
 
-This software is provided for free as part of the Türkay Software security suite.
+This software is offered free of charge as part of the **Türkay Software solutions package** and is protected under the [**MIT License**](https://github.com/turkaysoftware/encryphix?tab=MIT-1-ov-file).
