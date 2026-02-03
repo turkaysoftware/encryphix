@@ -36,8 +36,13 @@ Encryphix combines security with practical utility to offer a superior encryptio
 * **Secure Compression:** Optionally compress your data while encrypting it to save storage space.
 * **Folder & File Support:** Encrypt individual files or entire directory structures with equal ease.
 * **Multi-Architecture Support:** Fully compatible with both x64-x86 and ARM processor architectures.
-* **TS Wizard Integration:** Seamlessly works with [TS Wizard](https://www.turkaysoftware.com/ts-wizard) for update notifications and monitoring.
-* **Translation Support:** Community-backed localization via the [Translation Guide](https://github.com/turkaysoftware/encryphix/discussions/1).
+
+---
+
+## 🛠️ Automatic Updates and Translation Support
+
+* **TS Wizard Integration:** Fully compatible with [TS Wizard](https://www.turkaysoftware.com/ts-wizard) for automatic updates and system monitoring.
+* **Translation Support:** Community-driven localization via the official [Translation Guide](https://github.com/turkaysoftware/encryphix/discussions/1).
 
 ---
 
