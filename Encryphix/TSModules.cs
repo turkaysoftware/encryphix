@@ -194,6 +194,34 @@ namespace Encryphix{
                     }catch (IOException){ }
                 }
             }
+            public void TSDeleteSetting(string sectionName, string keyName){
+                lock (_fileLock){
+                    if (!File.Exists(_iniFilePath)) return;
+                    List<string> lines = File.ReadAllLines(_iniFilePath, Encoding.UTF8).ToList();
+                    bool isInSection = string.IsNullOrEmpty(sectionName);
+                    for (int i = 0; i < lines.Count; i++){
+                        string line = lines[i].Trim();
+                        if (line.Length == 0 || line.StartsWith(";")) continue;
+                        if (line.StartsWith("[") && line.EndsWith("]")){
+                            isInSection = line.Equals("[" + sectionName + "]", StringComparison.OrdinalIgnoreCase);
+                            continue;
+                        }
+                        if (isInSection){
+                            int eqIndex = line.IndexOf('=');
+                            if (eqIndex > 0){
+                                string currentKey = line.Substring(0, eqIndex).Trim();
+                                if (currentKey.Equals(keyName, StringComparison.OrdinalIgnoreCase)){
+                                    lines.RemoveAt(i);
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                    try{
+                        File.WriteAllLines(_iniFilePath, lines, Encoding.UTF8);
+                    }catch (IOException) { }
+                }
+            }
         }
         // READ LANG PATHS
         // ======================================================================================================
@@ -311,6 +339,7 @@ namespace Encryphix{
                 { "AccentColor", Color.FromArgb(90, 111, 141) },
                 { "AccentColorHover", Color.FromArgb(100, 124, 156) },
                 { "AccentColorText", Color.FromArgb(51, 51, 51) },
+                { "CheckBoxUnCheckBorderColor", Color.FromArgb(98, 98, 98) },
                 //
                 { "UIBGColor", Color.White },
                 { "UIBGColor2", Color.FromArgb(236, 242, 248) },
@@ -350,6 +379,7 @@ namespace Encryphix{
                 { "AccentColor", Color.FromArgb(125, 154, 197) },
                 { "AccentColorHover", Color.FromArgb(139, 170, 216) },
                 { "AccentColorText", Color.WhiteSmoke },
+                { "CheckBoxUnCheckBorderColor", Color.FromArgb(170, 170, 170) },
                 //
                 { "UIBGColor", Color.FromArgb(34, 38, 44) },
                 { "UIBGColor2", Color.FromArgb(27, 30, 34) },

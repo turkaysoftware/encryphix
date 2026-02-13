@@ -37,16 +37,16 @@
             this.Progress_BG = new System.Windows.Forms.Panel();
             this.Progress_FE = new System.Windows.Forms.Panel();
             this.PanelControl = new System.Windows.Forms.Panel();
+            this.Label_SaveFolder = new System.Windows.Forms.Label();
             this.Label_Compress = new System.Windows.Forms.Label();
             this.Combo_Compress = new Encryphix.TSCustomComboBox();
-            this.CheckOrjFileDelete = new System.Windows.Forms.CheckBox();
+            this.CheckOrjFileDelete = new Encryphix.TSCustomCheckBox();
             this.PanelBtns = new System.Windows.Forms.Panel();
             this.BtnSelect = new Encryphix.TSCustomButton();
             this.BtnBurner = new Encryphix.TSCustomButton();
             this.BtnSavePath = new Encryphix.TSCustomButton();
             this.BtnShowPassword = new Encryphix.TSCustomButton();
             this.TextBox_SaveFolder = new System.Windows.Forms.TextBox();
-            this.Label_SaveFolder = new System.Windows.Forms.Label();
             this.TextBox_Password = new System.Windows.Forms.TextBox();
             this.Label_Password = new System.Windows.Forms.Label();
             this.FAF_DGV = new System.Windows.Forms.DataGridView();
@@ -60,6 +60,7 @@
             this.arabicToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.chineseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.englishToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dutchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.frenchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.germanToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.hindiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -71,7 +72,6 @@
             this.russianToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.spanishToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.turkishToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.dutchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.startupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.windowedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fullScreenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -118,8 +118,8 @@
             // Progress_FE
             // 
             this.Progress_FE.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(111)))), ((int)(((byte)(141)))));
-            this.Progress_FE.Dock = System.Windows.Forms.DockStyle.Left;
-            this.Progress_FE.Location = new System.Drawing.Point(0, 0);
+            this.Progress_FE.Dock = System.Windows.Forms.DockStyle.Right;
+            this.Progress_FE.Location = new System.Drawing.Point(879, 0);
             this.Progress_FE.Name = "Progress_FE";
             this.Progress_FE.Size = new System.Drawing.Size(99, 5);
             this.Progress_FE.TabIndex = 0;
@@ -127,6 +127,7 @@
             // PanelControl
             // 
             this.PanelControl.BackColor = System.Drawing.Color.White;
+            this.PanelControl.Controls.Add(this.Label_SaveFolder);
             this.PanelControl.Controls.Add(this.Label_Compress);
             this.PanelControl.Controls.Add(this.Combo_Compress);
             this.PanelControl.Controls.Add(this.CheckOrjFileDelete);
@@ -134,7 +135,6 @@
             this.PanelControl.Controls.Add(this.BtnSavePath);
             this.PanelControl.Controls.Add(this.BtnShowPassword);
             this.PanelControl.Controls.Add(this.TextBox_SaveFolder);
-            this.PanelControl.Controls.Add(this.Label_SaveFolder);
             this.PanelControl.Controls.Add(this.TextBox_Password);
             this.PanelControl.Controls.Add(this.Label_Password);
             this.PanelControl.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -144,6 +144,19 @@
             this.PanelControl.Padding = new System.Windows.Forms.Padding(10);
             this.PanelControl.Size = new System.Drawing.Size(978, 144);
             this.PanelControl.TabIndex = 2;
+            // 
+            // Label_SaveFolder
+            // 
+            this.Label_SaveFolder.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.Label_SaveFolder.AutoSize = true;
+            this.Label_SaveFolder.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
+            this.Label_SaveFolder.ForeColor = System.Drawing.Color.Black;
+            this.Label_SaveFolder.Location = new System.Drawing.Point(9, 81);
+            this.Label_SaveFolder.Margin = new System.Windows.Forms.Padding(3);
+            this.Label_SaveFolder.Name = "Label_SaveFolder";
+            this.Label_SaveFolder.Size = new System.Drawing.Size(143, 19);
+            this.Label_SaveFolder.TabIndex = 3;
+            this.Label_SaveFolder.Text = "Kaydedilecek Konum:";
             // 
             // Label_Compress
             // 
@@ -175,9 +188,12 @@
             this.Combo_Compress.FormattingEnabled = true;
             this.Combo_Compress.HoverBackColor = System.Drawing.SystemColors.Window;
             this.Combo_Compress.HoverButtonColor = System.Drawing.SystemColors.ControlDark;
+            this.Combo_Compress.HoverForeColor = System.Drawing.SystemColors.WindowText;
             this.Combo_Compress.Location = new System.Drawing.Point(356, 37);
             this.Combo_Compress.Margin = new System.Windows.Forms.Padding(3, 3, 3, 15);
             this.Combo_Compress.Name = "Combo_Compress";
+            this.Combo_Compress.SelectedBackColor = System.Drawing.SystemColors.Highlight;
+            this.Combo_Compress.SelectedForeColor = System.Drawing.SystemColors.HighlightText;
             this.Combo_Compress.Size = new System.Drawing.Size(250, 26);
             this.Combo_Compress.TabIndex = 8;
             this.Combo_Compress.SelectedIndexChanged += new System.EventHandler(this.Combo_Compress_SelectedIndexChanged);
@@ -185,15 +201,24 @@
             // CheckOrjFileDelete
             // 
             this.CheckOrjFileDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.CheckOrjFileDelete.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.CheckOrjFileDelete.AutoSize = true;
+            this.CheckOrjFileDelete.BorderRadius = 2F;
+            this.CheckOrjFileDelete.BorderThickness = 1F;
+            this.CheckOrjFileDelete.CheckedColor = System.Drawing.Color.DodgerBlue;
+            this.CheckOrjFileDelete.CheckMarkColor = System.Drawing.Color.White;
             this.CheckOrjFileDelete.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.CheckOrjFileDelete.DrawUncheckedFill = false;
             this.CheckOrjFileDelete.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
-            this.CheckOrjFileDelete.Location = new System.Drawing.Point(199, 80);
+            this.CheckOrjFileDelete.Location = new System.Drawing.Point(356, 108);
+            this.CheckOrjFileDelete.MaxBorderRadius = 8F;
+            this.CheckOrjFileDelete.MaxBorderThickness = 4F;
             this.CheckOrjFileDelete.Name = "CheckOrjFileDelete";
-            this.CheckOrjFileDelete.Size = new System.Drawing.Size(142, 21);
-            this.CheckOrjFileDelete.TabIndex = 4;
+            this.CheckOrjFileDelete.Size = new System.Drawing.Size(96, 21);
+            this.CheckOrjFileDelete.TabIndex = 6;
             this.CheckOrjFileDelete.Text = "Orijinali Sil";
             this.CheckOrjFileDelete.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.CheckOrjFileDelete.UncheckedBackColor = System.Drawing.Color.Transparent;
+            this.CheckOrjFileDelete.UncheckedBorderColor = System.Drawing.Color.Gray;
             this.CheckOrjFileDelete.UseVisualStyleBackColor = true;
             // 
             // PanelBtns
@@ -280,7 +305,7 @@
             this.BtnSavePath.Margin = new System.Windows.Forms.Padding(3, 3, 12, 3);
             this.BtnSavePath.Name = "BtnSavePath";
             this.BtnSavePath.Size = new System.Drawing.Size(27, 27);
-            this.BtnSavePath.TabIndex = 6;
+            this.BtnSavePath.TabIndex = 5;
             this.BtnSavePath.TextColor = System.Drawing.Color.White;
             this.BtnSavePath.UseVisualStyleBackColor = false;
             this.BtnSavePath.Click += new System.EventHandler(this.BtnSavePath_Click);
@@ -316,20 +341,7 @@
             this.TextBox_SaveFolder.Location = new System.Drawing.Point(13, 106);
             this.TextBox_SaveFolder.Name = "TextBox_SaveFolder";
             this.TextBox_SaveFolder.Size = new System.Drawing.Size(297, 25);
-            this.TextBox_SaveFolder.TabIndex = 5;
-            // 
-            // Label_SaveFolder
-            // 
-            this.Label_SaveFolder.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.Label_SaveFolder.AutoSize = true;
-            this.Label_SaveFolder.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
-            this.Label_SaveFolder.ForeColor = System.Drawing.Color.Black;
-            this.Label_SaveFolder.Location = new System.Drawing.Point(9, 81);
-            this.Label_SaveFolder.Margin = new System.Windows.Forms.Padding(3);
-            this.Label_SaveFolder.Name = "Label_SaveFolder";
-            this.Label_SaveFolder.Size = new System.Drawing.Size(143, 19);
-            this.Label_SaveFolder.TabIndex = 3;
-            this.Label_SaveFolder.Text = "Kaydedilecek Konum:";
+            this.TextBox_SaveFolder.TabIndex = 4;
             // 
             // TextBox_Password
             // 
@@ -496,92 +508,92 @@
             // arabicToolStripMenuItem
             // 
             this.arabicToolStripMenuItem.Name = "arabicToolStripMenuItem";
-            this.arabicToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.arabicToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.arabicToolStripMenuItem.Text = "Arabic";
             // 
             // chineseToolStripMenuItem
             // 
             this.chineseToolStripMenuItem.Name = "chineseToolStripMenuItem";
-            this.chineseToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.chineseToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.chineseToolStripMenuItem.Text = "Chinese";
             // 
             // englishToolStripMenuItem
             // 
             this.englishToolStripMenuItem.Name = "englishToolStripMenuItem";
-            this.englishToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.englishToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.englishToolStripMenuItem.Text = "English";
+            // 
+            // dutchToolStripMenuItem
+            // 
+            this.dutchToolStripMenuItem.Name = "dutchToolStripMenuItem";
+            this.dutchToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
+            this.dutchToolStripMenuItem.Text = "Dutch";
             // 
             // frenchToolStripMenuItem
             // 
             this.frenchToolStripMenuItem.Name = "frenchToolStripMenuItem";
-            this.frenchToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.frenchToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.frenchToolStripMenuItem.Text = "French";
             // 
             // germanToolStripMenuItem
             // 
             this.germanToolStripMenuItem.Name = "germanToolStripMenuItem";
-            this.germanToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.germanToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.germanToolStripMenuItem.Text = "German";
             // 
             // hindiToolStripMenuItem
             // 
             this.hindiToolStripMenuItem.Name = "hindiToolStripMenuItem";
-            this.hindiToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.hindiToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.hindiToolStripMenuItem.Text = "Hindi";
             // 
             // italianToolStripMenuItem
             // 
             this.italianToolStripMenuItem.Name = "italianToolStripMenuItem";
-            this.italianToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.italianToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.italianToolStripMenuItem.Text = "Italian";
             // 
             // japaneseToolStripMenuItem
             // 
             this.japaneseToolStripMenuItem.Name = "japaneseToolStripMenuItem";
-            this.japaneseToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.japaneseToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.japaneseToolStripMenuItem.Text = "Japanese";
             // 
             // koreanToolStripMenuItem
             // 
             this.koreanToolStripMenuItem.Name = "koreanToolStripMenuItem";
-            this.koreanToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.koreanToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.koreanToolStripMenuItem.Text = "Korean";
             // 
             // polishToolStripMenuItem
             // 
             this.polishToolStripMenuItem.Name = "polishToolStripMenuItem";
-            this.polishToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.polishToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.polishToolStripMenuItem.Text = "Polish";
             // 
             // portugueseToolStripMenuItem
             // 
             this.portugueseToolStripMenuItem.Name = "portugueseToolStripMenuItem";
-            this.portugueseToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.portugueseToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.portugueseToolStripMenuItem.Text = "Portuguese";
             // 
             // russianToolStripMenuItem
             // 
             this.russianToolStripMenuItem.Name = "russianToolStripMenuItem";
-            this.russianToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.russianToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.russianToolStripMenuItem.Text = "Russian";
             // 
             // spanishToolStripMenuItem
             // 
             this.spanishToolStripMenuItem.Name = "spanishToolStripMenuItem";
-            this.spanishToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.spanishToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.spanishToolStripMenuItem.Text = "Spanish";
             // 
             // turkishToolStripMenuItem
             // 
             this.turkishToolStripMenuItem.Name = "turkishToolStripMenuItem";
-            this.turkishToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.turkishToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.turkishToolStripMenuItem.Text = "Turkish";
-            // 
-            // dutchToolStripMenuItem
-            // 
-            this.dutchToolStripMenuItem.Name = "dutchToolStripMenuItem";
-            this.dutchToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.dutchToolStripMenuItem.Text = "Dutch";
             // 
             // startupToolStripMenuItem
             // 
@@ -734,7 +746,7 @@
         private System.Windows.Forms.ToolStripMenuItem windowedToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem fullScreenToolStripMenuItem;
         private System.Windows.Forms.DataGridView FAF_DGV;
-        private System.Windows.Forms.CheckBox CheckOrjFileDelete;
+        private TSCustomCheckBox CheckOrjFileDelete;
         private System.Windows.Forms.ToolTip MainToolTip;
         private System.Windows.Forms.ToolStripMenuItem systemThemeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem safetyWarningsToolStripMenuItem;

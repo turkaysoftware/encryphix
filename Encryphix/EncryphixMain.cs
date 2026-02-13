@@ -705,7 +705,12 @@ namespace Encryphix{
                 TextBox_Password.BackColor = TS_ThemeEngine.ColorMode(theme, "UIBGColor2");
                 TextBox_Password.ForeColor = TS_ThemeEngine.ColorMode(theme, "TextBoxFEColor");
                 Label_SaveFolder.ForeColor = TS_ThemeEngine.ColorMode(theme, "AccentColorText");
+                //
                 CheckOrjFileDelete.ForeColor = TS_ThemeEngine.ColorMode(theme, "AccentColorText");
+                CheckOrjFileDelete.CheckedColor = TS_ThemeEngine.ColorMode(theme, "AccentColor");
+                CheckOrjFileDelete.CheckMarkColor = TS_ThemeEngine.ColorMode(theme, "UIBGColor2");
+                CheckOrjFileDelete.UncheckedBorderColor = TS_ThemeEngine.ColorMode(theme, "CheckBoxUnCheckBorderColor");
+                //
                 TextBox_SaveFolder.BackColor = TS_ThemeEngine.ColorMode(theme, "UIBGColor2");
                 TextBox_SaveFolder.ForeColor = TS_ThemeEngine.ColorMode(theme, "TextBoxFEColor");
                 Label_Compress.ForeColor = TS_ThemeEngine.ColorMode(theme, "AccentColorText");
@@ -733,6 +738,9 @@ namespace Encryphix{
                 Combo_Compress.DisabledForeColor = TS_ThemeEngine.ColorMode(theme, "TextBoxFEColor");
                 Combo_Compress.DisabledButtonColor = TS_ThemeEngine.ColorMode(theme, "AccentColor");
                 Combo_Compress.DisabledArrowColor = TS_ThemeEngine.ColorMode(theme, "DynamicThemeActiveBtnBG");
+                Combo_Compress.HoverForeColor = TS_ThemeEngine.ColorMode(theme, "TextBoxFEColor");
+                Combo_Compress.SelectedBackColor = TS_ThemeEngine.ColorMode(theme, "AccentColor");
+                Combo_Compress.SelectedForeColor = TS_ThemeEngine.ColorMode(theme, "UIBGColor2");
                 //
                 Software_other_page_preloader();
             }catch (Exception){ }
