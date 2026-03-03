@@ -1,6 +1,7 @@
 ﻿// ======================================================================================================
 // Encryphix - File and Folder Encryption Software
 // © Copyright 2025-2026, Eray Türkay.
+// Publisher: Türkay Software
 // Project Type: Open Source
 // License: MIT License
 // Website: https://www.turkaysoftware.com/encryphix
@@ -173,10 +174,10 @@ namespace Encryphix{
             Combo_Compress.SelectedIndex = 0;
             // THEME - LANG - STARTUP MODE PRELOADER
             // ======================================================================================================
-            TSSettingsSave software_read_settings = new TSSettingsSave(ts_sf);
+            TSSettingsModule software_read_settings = new TSSettingsModule(ts_sf);
             //
             int theme_mode = int.TryParse(software_read_settings.TSReadSettings(ts_settings_container, "ThemeStatus"), out int the_status) && (the_status == 0 || the_status == 1 || the_status == 2) ? the_status : 1;
-            if (theme_mode == 2) { themeSystem = 2; Theme_engine(GetSystemTheme(2)); } else Theme_engine(theme_mode);
+            if (theme_mode == 2) { themeSystem = 2; Theme_engine(TSThemeModeHelper.GetSystemTheme(2)); } else Theme_engine(theme_mode);
             darkThemeToolStripMenuItem.Checked = theme_mode == 0;
             lightThemeToolStripMenuItem.Checked = theme_mode == 1;
             systemThemeToolStripMenuItem.Checked = theme_mode == 2;
@@ -608,7 +609,7 @@ namespace Encryphix{
             }
         }
         private void SystemThemeToolStripMenuItem_Click(object sender, EventArgs e){
-            themeSystem = 2; Theme_engine(GetSystemTheme(2)); SaveTheme(2); Select_theme_active(sender);
+            themeSystem = 2; Theme_engine(TSThemeModeHelper.GetSystemTheme(2)); SaveTheme(2); Select_theme_active(sender);
         }
         private void LightThemeToolStripMenuItem_Click(object sender, EventArgs e){
             themeSystem = 0; Theme_engine(1); SaveTheme(1); Select_theme_active(sender);
@@ -616,11 +617,11 @@ namespace Encryphix{
         private void DarkThemeToolStripMenuItem_Click(object sender, EventArgs e){
             themeSystem = 0; Theme_engine(0); SaveTheme(0); Select_theme_active(sender);
         }
-        private void TSUseSystemTheme() { if (themeSystem == 2) Theme_engine(GetSystemTheme(2)); }
+        private void TSUseSystemTheme() { if (themeSystem == 2) Theme_engine(TSThemeModeHelper.GetSystemTheme(2)); }
         private void SaveTheme(int ts){
             // SAVE CURRENT THEME
             try{
-                TSSettingsSave software_setting_save = new TSSettingsSave(ts_sf);
+                TSSettingsModule software_setting_save = new TSSettingsModule(ts_sf);
                 software_setting_save.TSWriteSettings(ts_settings_container, "ThemeStatus", Convert.ToString(ts));
             }catch (Exception){ }
         }
@@ -811,7 +812,7 @@ namespace Encryphix{
         private void Lang_preload(string lang_type, string lang_code){
             Lang_engine(lang_type, lang_code);
             try{
-                TSSettingsSave software_setting_save = new TSSettingsSave(ts_sf);
+                TSSettingsModule software_setting_save = new TSSettingsModule(ts_sf);
                 software_setting_save.TSWriteSettings(ts_settings_container, "LanguageStatus", lang_code);
             }catch (Exception){ }
             // LANG CHANGE NOTIFICATION
@@ -936,7 +937,7 @@ namespace Encryphix{
         }
         private void Startup_mode_settings(string get_startup_value){
             try{
-                TSSettingsSave software_setting_save = new TSSettingsSave(ts_sf);
+                TSSettingsModule software_setting_save = new TSSettingsModule(ts_sf);
                 software_setting_save.TSWriteSettings(ts_settings_container, "StartupStatus", get_startup_value);
             }catch (Exception){ }
         }
@@ -966,7 +967,7 @@ namespace Encryphix{
         }
         private void Safety_warnings_mode_settings(string get_safety_warnings_value){
             try{
-                TSSettingsSave software_setting_save = new TSSettingsSave(ts_sf);
+                TSSettingsModule software_setting_save = new TSSettingsModule(ts_sf);
                 software_setting_save.TSWriteSettings(ts_settings_container, "SafetyWarnings", get_safety_warnings_value);
             }catch (Exception){ }
         }
