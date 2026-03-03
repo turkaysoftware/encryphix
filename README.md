@@ -49,7 +49,7 @@ Encryphix combines security with practical utility to offer a superior encryptio
 
 ## 📸 Interface Preview
 
-<img width="1010" height="633" alt="Encryphix UI" src="https://github.com/user-attachments/assets/f583f27a-a04e-492b-963e-a3412bd7f2ce" />
+<img width="1010" height="633" alt="Encryphix UI" src="https://github.com/user-attachments/assets/6ef81cda-b8ff-4c9e-9150-e4869b34f2a3" />
 
 ---
 
