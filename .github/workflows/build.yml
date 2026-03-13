@@ -20,5 +20,4 @@ jobs:
         uses: microsoft/setup-msbuild@v2
 
       - name: Build solution
-
-        run: msbuild Encryphix.sln /p:Configuration=Release
+        run: msbuild Encryphix/Encryphix.sln /p:Configuration=Release /p:Platform=x64
