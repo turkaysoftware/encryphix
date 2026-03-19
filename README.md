@@ -1,17 +1,16 @@
-# 🔒 Encryphix - Advanced File & Folder Encryption Software
+# Encryphix - Advanced File & Folder Encryption Software
 
 ![GitHub all releases](https://img.shields.io/github/downloads/turkaysoftware/encryphix/total?style=for-the-badge&color=DF313F)
 ![GitHub Repo stars](https://img.shields.io/github/stars/turkaysoftware/encryphix?style=for-the-badge&color=167C33)
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/turkaysoftware/encryphix?style=for-the-badge&color=9A194C)
 ![Platform](https://img.shields.io/badge/platform-Windows-366194?style=for-the-badge&logo=windows)
-![GitHub license](https://img.shields.io/github/license/turkaysoftware/encryphix?style=for-the-badge&color=17796E)
 
 **Encryphix** is a high-security **File and Folder Encryption Software** developed by **Eray Türkay**. It provides professional-grade protection for your sensitive data using industry-standard **PBKDF2** and **AES-256** encryption algorithms. Designed for users who demand both security and simplicity, Encryphix ensures your private files remain truly private.
 
 ---
 
-### ☕ Support the Project
-Encryphix is free and will always be. If you find it useful, consider supporting the development!
+### Donate
+You can support this project by making a donation to help ensure its sustainability and the development of new features.
 
 [![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-Donate-DF313F?style=for-the-badge&logo=buy-me-a-coffee)](https://buymeacoffee.com/turkaysoftware)
 
@@ -19,18 +18,18 @@ Encryphix is free and will always be. If you find it useful, consider supporting
 
 ---
 
-## ✨ Key Features
+## Key Features
 
-* 🛡️ **Military-Grade Security:** Utilizes **AES-256** and **PBKDF2** for robust data encryption.
-* 🚀 **Pure Performance:** Developed exclusively in **C# and .NET Framework** with no external libraries or dependencies.
-* 🌓 **Modern UI:** Sophisticated interface with Light, Dark, and System theme support.
-* 🌍 **Multilingual:** Fully supports 15+ languages including English, Turkish, German, and more.
-* 📦 **Portable:** No installation required. Carry your encryption tool anywhere and run it instantly.
-* 🆓 **Completely Free:** High-end encryption features provided at no cost to the user.
+* **Military-Grade Security:** Utilizes **AES-256** and **PBKDF2** for robust data encryption.
+* **Pure Performance:** Developed exclusively in **C# and .NET Framework** with no external libraries or dependencies.
+* **Modern UI:** Sophisticated interface with Light, Dark, and System theme support.
+* **Multilingual:** Fully supports 15+ languages including English, Turkish, German, and more.
+* **Portable:** No installation required. Carry your encryption tool anywhere and run it instantly.
+* **Completely Free:** High-end encryption features provided at no cost to the user.
 
 ---
 
-## 🛠️ Advanced Capabilities
+## Advanced Capabilities
 
 Encryphix combines security with practical utility to offer a superior encryption experience:
 
@@ -40,20 +39,20 @@ Encryphix combines security with practical utility to offer a superior encryptio
 
 ---
 
-## 🛠️ Automatic Updates and Translation Support
+## Automatic Updates and Translation Support
 
 * **TS Wizard Integration:** Fully compatible with [TS Wizard](https://www.turkaysoftware.com/ts-wizard) for automatic updates and system monitoring.
 * **Translation Support:** Community-driven localization via the official [Translation Guide](https://github.com/turkaysoftware/encryphix/discussions/1).
 
 ---
 
-## 📸 Interface Preview
+## Interface Preview
 
 <img width="1010" height="633" alt="Encryphix UI" src="https://github.com/user-attachments/assets/6ef81cda-b8ff-4c9e-9150-e4869b34f2a3" />
 
 ---
 
-## 💻 System Requirements
+## System Requirements
 
 | Feature | Minimum Requirements | Recommended Requirements |
 | :--- | :--- | :--- |
@@ -63,7 +62,7 @@ Encryphix combines security with practical utility to offer a superior encryptio
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 1.  Navigate to the **[Releases](https://github.com/turkaysoftware/encryphix/releases/latest)** page.
 2.  Download the latest ZIP file.
@@ -74,7 +73,7 @@ Encryphix combines security with practical utility to offer a superior encryptio
 
 ---
 
-## 🛡️ Security
+## Security
 
 * **Zero Data Export Policy:** Your privacy is our priority; no data leaves your machine.
 * **No Dependencies:** Developed entirely from scratch using its own source code, there are no risks from security vulnerabilities in third-party libraries.
@@ -82,6 +81,6 @@ Encryphix combines security with practical utility to offer a superior encryptio
 
 ---
 
-## 📄 License
+## License
 
 This software is offered free of charge as part of the **Türkay Software solutions package** and is protected under the [**MIT License**](https://github.com/turkaysoftware/encryphix?tab=MIT-1-ov-file).
