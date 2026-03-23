@@ -1,9 +1,9 @@
 # Encryphix - Advanced File & Folder Encryption Software
 
-![GitHub all releases](https://img.shields.io/github/downloads/turkaysoftware/encryphix/total?style=for-the-badge&color=DF313F)
-![GitHub Repo stars](https://img.shields.io/github/stars/turkaysoftware/encryphix?style=for-the-badge&color=167C33)
-![GitHub release (latest by date)](https://img.shields.io/github/v/release/turkaysoftware/encryphix?style=for-the-badge&color=9A194C)
-![Platform](https://img.shields.io/badge/platform-Windows-366194?style=for-the-badge&logo=windows)
+[![GitHub downloads](https://img.shields.io/github/downloads/turkaysoftware/encryphix/total?style=flat&color=1a893c)](https://github.com/turkaysoftware/encryphix/releases)
+[![GitHub stars](https://img.shields.io/github/stars/turkaysoftware/encryphix?style=flat&color=0062cc)](https://github.com/turkaysoftware/encryphix/stargazers)
+[![GitHub release](https://img.shields.io/github/v/release/turkaysoftware/encryphix?style=flat&color=5a32a3)](https://github.com/turkaysoftware/encryphix/releases/latest)
+[![Platform](https://img.shields.io/badge/platform-Windows-b31d28?style=flat)](https://github.com/turkaysoftware/encryphix)
 
 **Encryphix** is a high-security **File and Folder Encryption Software** developed by **Eray Türkay**. It provides professional-grade protection for your sensitive data using industry-standard **PBKDF2** and **AES-256** encryption algorithms. Designed for users who demand both security and simplicity, Encryphix ensures your private files remain truly private.
 
@@ -12,9 +12,7 @@
 ### Donate
 You can support this project by making a donation to help ensure its sustainability and the development of new features.
 
-[![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-Donate-DF313F?style=for-the-badge&logo=buy-me-a-coffee)](https://buymeacoffee.com/turkaysoftware)
-
-[Official Website](https://www.turkaysoftware.com) | [Report a Bug](https://github.com/turkaysoftware/encryphix/issues)
+[![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-Donate-0a6628?style=flat&logo=buy-me-a-coffee&logoColor=white)](https://buymeacoffee.com/turkaysoftware)
 
 ---
 
