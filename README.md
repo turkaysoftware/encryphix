@@ -1,9 +1,9 @@
 # Encryphix - Advanced File & Folder Encryption Software
 
-[![GitHub downloads](https://img.shields.io/github/downloads/turkaysoftware/encryphix/total?style=flat&color=1a893c)](https://github.com/turkaysoftware/encryphix/releases)
-[![GitHub stars](https://img.shields.io/github/stars/turkaysoftware/encryphix?style=flat&color=0062cc)](https://github.com/turkaysoftware/encryphix/stargazers)
-[![GitHub release](https://img.shields.io/github/v/release/turkaysoftware/encryphix?style=flat&color=5a32a3)](https://github.com/turkaysoftware/encryphix/releases/latest)
-[![Platform](https://img.shields.io/badge/platform-Windows-b31d28?style=flat)](https://github.com/turkaysoftware/encryphix)
+[![GitHub downloads](https://img.shields.io/github/downloads/turkaysoftware/encryphix/total?style=flat&color=1a893c&label=Downloads)](https://github.com/turkaysoftware/encryphix/releases)
+[![GitHub stars](https://img.shields.io/github/stars/turkaysoftware/encryphix?style=flat&color=0062cc&label=Stars)](https://github.com/turkaysoftware/encryphix/stargazers)
+[![GitHub release](https://img.shields.io/github/v/release/turkaysoftware/encryphix?style=flat&color=5a32a3&label=Latest%20Release)](https://github.com/turkaysoftware/encryphix/releases/latest)
+[![Platform](https://img.shields.io/badge/platform-Windows-b31d28?style=flat&label=Platform)](https://github.com/turkaysoftware/encryphix)
 
 **Encryphix** is a high-security **File and Folder Encryption Software** developed by **Eray Türkay**. It provides professional-grade protection for your sensitive data using industry-standard **PBKDF2** and **AES-256** encryption algorithms. Designed for users who demand both security and simplicity, Encryphix ensures your private files remain truly private.
 
