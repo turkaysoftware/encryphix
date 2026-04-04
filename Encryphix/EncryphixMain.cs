@@ -11,7 +11,6 @@
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Drawing2D;
@@ -1115,7 +1114,7 @@ namespace Encryphix{
         }
         // EXIT
         // ======================================================================================================
-        private void Software_exit(){ Application.Exit(); }
-        private void Encryphix_FormClosing(object sender, FormClosingEventArgs e){ Software_exit();  }
+        private void Software_exit() { Application.Exit(); }
+        private void Encryphix_FormClosing(object sender, FormClosingEventArgs e){ Software_exit(); }
     }
 }
