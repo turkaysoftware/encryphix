@@ -1,9 +1,9 @@
 # Encryphix - Advanced File & Folder Encryption Software
 
-[![GitHub downloads](https://img.shields.io/github/downloads/turkaysoftware/encryphix/total?style=flat&color=1a893c&label=Downloads)](https://github.com/turkaysoftware/encryphix/releases)
-[![GitHub stars](https://img.shields.io/github/stars/turkaysoftware/encryphix?style=flat&color=0062cc&label=Stars)](https://github.com/turkaysoftware/encryphix/stargazers)
-[![GitHub release](https://img.shields.io/github/v/release/turkaysoftware/encryphix?style=flat&color=5a32a3&label=Latest%20Release)](https://github.com/turkaysoftware/encryphix/releases/latest)
-[![Platform](https://img.shields.io/badge/platform-Windows-b31d28?style=flat&label=Platform)](https://github.com/turkaysoftware/encryphix)
+[![GitHub downloads](https://img.shields.io/github/downloads/turkaysoft/encryphix/total?style=flat&color=1a893c&label=Downloads)](https://github.com/turkaysoft/encryphix/releases)
+[![GitHub stars](https://img.shields.io/github/stars/turkaysoft/encryphix?style=flat&color=0062cc&label=Stars)](https://github.com/turkaysoft/encryphix/stargazers)
+[![GitHub release](https://img.shields.io/github/v/release/turkaysoft/encryphix?style=flat&color=5a32a3&label=Latest%20Release)](https://github.com/turkaysoft/encryphix/releases/latest)
+[![Platform](https://img.shields.io/badge/platform-Windows-b31d28?style=flat&label=Platform)](https://github.com/turkaysoft/encryphix)
 
 **Encryphix** is a high-security **File and Folder Encryption Software** developed by **Eray Türkay**. It provides professional-grade protection for your sensitive data using industry-standard **PBKDF2** and **AES-256** encryption algorithms. Designed for users who demand both security and simplicity, Encryphix ensures your private files remain truly private.
 
@@ -12,7 +12,7 @@
 ### Donate
 You can support this project by making a donation to help ensure its sustainability and the development of new features.
 
-[![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-Donate-0a6628?style=flat&logo=buy-me-a-coffee&logoColor=white)](https://buymeacoffee.com/turkaysoftware)
+[![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-Donate-0a6628?style=flat&logo=buy-me-a-coffee&logoColor=white)](https://buymeacoffee.com/turkaysoft)
 
 ---
 
@@ -45,7 +45,7 @@ Encryphix combines security with practical utility to offer a superior encryptio
 
 ## Translation Support
 
-* **Translation Support:** Community-driven localization via the official [Translation Guide](https://github.com/turkaysoftware/encryphix/discussions/1).
+* **Translation Support:** Community-driven localization via the official [Translation Guide](https://github.com/turkaysoft/encryphix/discussions/1).
 
 ---
 
@@ -62,7 +62,7 @@ Encryphix combines security with practical utility to offer a superior encryptio
 
 ## Getting Started
 
-1.  Navigate to the **[Releases](https://github.com/turkaysoftware/encryphix/releases/latest)** page.
+1.  Navigate to the **[Releases](https://github.com/turkaysoft/encryphix/releases/latest)** page.
 2.  Download the latest ZIP file.
 3.  **Extract all files from the ZIP** (Important: Application requires all folder contents to run correctly).
 4.  Launch the executable:
@@ -81,4 +81,4 @@ Encryphix combines security with practical utility to offer a superior encryptio
 
 ## License
 
-This software is offered free of charge as part of the **Türkay Software solutions package** and is protected under the [**MIT License**](https://github.com/turkaysoftware/encryphix?tab=MIT-1-ov-file).
+This software is offered free of charge as part of the **Türkay Software solutions package** and is protected under the [**MIT License**](https://github.com/turkaysoft/encryphix?tab=MIT-1-ov-file).
